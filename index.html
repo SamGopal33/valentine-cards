@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Valentine E-Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffe6f2;
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      border: 2px solid #ff66b3;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ff66b3;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #ff66b3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff3385;
+    }
+    .image-preview {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Create Your Valentine E-Card</h1>
+    
+    <!-- Image Selection -->
+    <label for="image-select">Choose a Kitten Image:</label>
+    <select id="image-select" onchange="updateImage()">
+      <option value="kitten1.jpg">Kitten with Hearts</option>
+      <option value="kitten2.jpg">Kitten with Roses</option>
+      <option value="kitten3.jpg">Kitten in a Cup</option>
+    </select>
+    <img id="previewImage" src="kitten1.jpg" alt="Kitten Image" class="image-preview">
+    
+    <!-- Custom Text Inputs -->
+    <input type="text" id="name" placeholder="Recipient's Name">
+    <textarea id="message" placeholder="Your Message" rows="4"></textarea>
+    
+    <!-- Preview Button -->
+    <button onclick="previewCard()">Preview E-Card</button>
+    
+    <!-- Preview Section -->
+    <div id="preview" style="display: none; margin-top: 20px;">
+      <h2>Your E-Card Preview</h2>
+      <img id="finalImage" src="" alt="Final E-Card Image" class="image-preview">
+      <p><strong>To:</strong> <span id="previewName"></span></p>
+      <p><strong>Message:</strong> <span id="previewMessage"></span></p>
+      
+      <!-- PayPal Payment Button -->
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="your-paypal-email@example.com">
+        <input type="hidden" name="item_name" value="Custom Valentine E-Card">
+        <input type="hidden" name="amount" value="5.00">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      </form>
+      
+      <!-- Download Button (Hidden Until Payment) -->
+      <button id="downloadButton" style="display: none;" onclick="downloadCard()">Download E-Card</button>
+    </div>
+  </div>
+
+  <script>
+    // Update the preview image when a new image is selected
+    function updateImage() {
+      const selectedImage = document.getElementById('image-select').value;
+      document.getElementById('previewImage').src = selectedImage;
+    }
+
+    // Preview the e-card
+    function previewCard() {
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('message').value;
+      const selectedImage = document.getElementById('image-select').value;
+
+      document.getElementById('previewName').innerText = name;
+      document.getElementById('previewMessage').innerText = message;
+      document.getElementById('finalImage').src = selectedImage;
+      document.getElementById('preview').style.display = 'block';
+    }
+
+    // Download the e-card (after payment)
+    function downloadCard() {
+      alert('Thank you for your payment! Your e-card is now available for download.');
+      // Add code to generate and download the e-card as an image or PDF.
+    }
+  </script>
+</body>
+</html>
