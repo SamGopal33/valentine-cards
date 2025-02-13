@@ -3,75 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Image Test</title>
+  <title>Kitten E-Cards</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
       margin: 0;
       background-color: #f0f0f0;
-      flex-direction: column;
     }
-    
-    .carousel-images img {
+
+    .carousel-container {
+      position: relative;
       width: 80%;
-      height: auto;
       max-width: 600px;
-      margin-bottom: 20px;
+      overflow: hidden;
     }
 
-    .carousel-btns {
+    .carousel {
       display: flex;
-      justify-content: center;
+      transition: transform 0.5s ease-in-out;
     }
 
-    .carousel-btn {
-      background-color: #000;
-      color: #fff;
-      padding: 10px 20px;
-      margin: 0 10px;
+    .carousel img {
+      width: 100%;
+      height: auto;
+      max-height: 350px; /* Adjust based on landscape image height */
+      object-fit: contain; /* Keeps aspect ratio */
+    }
+
+    .carousel-caption {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(220, 120, 120, 0.8);
+      color: white;
       border: none;
+      padding: 10px;
       cursor: pointer;
+      font-size: 20px;
+      z-index: 10;
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+
+    .form-container {
+      margin-top: 20px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    input[type="email"], select, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+
+    .submit-btn {
+      background-color: #dc7878;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      border: none;
+    }
+
+    .submit-btn:hover {
+      background-color: #e68a8a;
     }
   </style>
 </head>
 <body>
-  <div class="carousel-images">
-    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+1" alt="Kitten Style 1">
-    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+2" alt="Kitten Style 2">
-    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+3" alt="Kitten Style 3">
-    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+4" alt="Kitten Style 4">
+
+  <!-- Carousel -->
+  <div class="carousel-container">
+    <button class="arrow arrow-left" onclick="prevImage()">&#10094;</button>
+    <div class="carousel">
+      <img src="kitten1.jpg" alt="Kitten 1">
+      <img src="kitten2.jpg" alt="Kitten 2">
+      <img src="kitten3.jpg" alt="Kitten 3">
+      <img src="kitten4.jpg" alt="Kitten 4">
+    </div>
+    <div class="carousel-caption" id="caption">Style 1</div>
+    <button class="arrow arrow-right" onclick="nextImage()">&#10095;</button>
   </div>
-  
-  <div class="carousel-btns">
-    <button class="carousel-btn" onclick="prevImage()">Previous</button>
-    <button class="carousel-btn" onclick="nextImage()">Next</button>
+
+  <!-- Donate Form -->
+  <div class="form-container">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input name="cmd" type="hidden" value="_s-xclick">
+      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+      <input name="custom" type="hidden" value="web_site">
+      
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <select name="style" id="styleSelect" required>
+        <option value="style1">Style 1</option>
+        <option value="style2">Style 2</option>
+        <option value="style3">Style 3</option>
+        <option value="style4">Style 4</option>
+      </select>
+      <button type="submit" class="submit-btn">Donate and Get Your E-Card</button>
+    </form>
   </div>
 
   <script>
-    var currentIndex = 0;
-    var images = document.querySelectorAll('.carousel-images img');
-    
-    // Function to move to the previous image
-    function prevImage() {
-      currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
-      updateCarousel();
-    }
-    
-    // Function to move to the next image
-    function nextImage() {
-      currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
-      updateCarousel();
-    }
-    
-    // Update the carousel images by changing the transform property
+    const images = document.querySelectorAll(".carousel img");
+    const captions = ["Style 1", "Style 2", "Style 3", "Style 4"];
+    let currentIndex = 0;
+
     function updateCarousel() {
-      var offset = -currentIndex * 100; // Move the carousel based on the current index
-      document.querySelector('.carousel-images').style.transform = 'translateX(' + offset + '%)';
+      const carousel = document.querySelector(".carousel");
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      document.getElementById("caption").innerText = captions[currentIndex];
+
+      // Update selected style in dropdown
+      document.getElementById("styleSelect").value = `style${currentIndex + 1}`;
     }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateCarousel();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateCarousel();
+    }
+
+    updateCarousel(); // Initialize
   </script>
+
 </body>
 </html>
