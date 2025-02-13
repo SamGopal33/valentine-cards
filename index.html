@@ -4,45 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitten E-Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       margin: 0;
       background-color: #f0f0f0;
       padding: 20px;
     }
 
-    /* Thumbnail Grid */
-    .gallery {
+    /* Thumbnail container */
+    .thumbnail-container {
       display: flex;
-      gap: 15px;
-      justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
+    /* Thumbnail images */
     .thumbnail {
+      height: 200px; /* Set height to match landscape images */
+      object-fit: contain; /* Maintain aspect ratio */
       cursor: pointer;
-      width: 150px;
-      height: auto;
-      border-radius: 5px;
       transition: transform 0.3s;
     }
 
     .thumbnail:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
-    .caption {
+    /* Subtitles */
+    .subtitle {
+      font-family: 'Quicksand', sans-serif;
+      color: #dc7878;
+      font-size: 18px;
+      font-weight: 600;
       text-align: center;
-      font-size: 16px;
-      font-weight: bold;
       margin-top: 5px;
     }
 
-    /* Modal (Enlarged Image) */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -50,82 +55,42 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
     }
 
     .modal img {
       max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
-
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-    }
-
-    /* Donate Form */
-    .form-container {
-      margin-top: 20px;
-      text-align: center;
-      width: 80%;
-      max-width: 400px;
-    }
-
-    input[type="email"], select, button {
-      padding: 12px;
-      margin: 5px;
-      font-size: 16px;
-      width: 100%;
-      box-sizing: border-box;
-      border-radius: 5px;
-    }
-
-    .submit-btn {
-      background-color: #dc7878;
-      color: white;
-      cursor: pointer;
-      text-align: center;
-      border: none;
-    }
-
-    .submit-btn:hover {
-      background-color: #e68a8a;
+      max-height: 90%;
     }
   </style>
 </head>
 <body>
 
-  <!-- Image Thumbnails -->
-  <div class="gallery">
+  <!-- Thumbnails -->
+  <div class="thumbnail-container">
     <div>
-      <img src="kitten1.jpg" alt="Kitten 1" class="thumbnail" onclick="openModal('kitten1.jpg', 'Style 1')">
-      <div class="caption">Style 1</div>
+      <img src="kitten1.jpg" alt="Kitten 1" class="thumbnail" onclick="openModal('kitten1.jpg')">
+      <div class="subtitle">Style 1</div>
     </div>
     <div>
-      <img src="kitten2.jpg" alt="Kitten 2" class="thumbnail" onclick="openModal('kitten2.jpg', 'Style 2')">
-      <div class="caption">Style 2</div>
+      <img src="kitten2.jpg" alt="Kitten 2" class="thumbnail" onclick="openModal('kitten2.jpg')">
+      <div class="subtitle">Style 2</div>
     </div>
     <div>
-      <img src="kitten3.jpg" alt="Kitten 3" class="thumbnail" onclick="openModal('kitten3.jpg', 'Style 3')">
-      <div class="caption">Style 3</div>
+      <img src="kitten3.jpg" alt="Kitten 3" class="thumbnail" onclick="openModal('kitten3.jpg')">
+      <div class="subtitle">Style 3</div>
     </div>
     <div>
-      <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg', 'Style 4')">
-      <div class="caption">Style 4</div>
+      <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')">
+      <div class="subtitle">Style 4</div>
     </div>
   </div>
 
-  <!-- Modal for Enlarged Image -->
-  <div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close">&times;</span>
-    <img id="modalImage">
+  <!-- Modal -->
+  <div class="modal" id="imageModal" onclick="closeModal()">
+    <img id="modalImage" src="" alt="Expanded Image">
   </div>
 
   <!-- Donate Form -->
@@ -147,12 +112,11 @@
   </div>
 
   <script>
-    function openModal(imageSrc, style) {
+    function openModal(imageSrc) {
       document.getElementById("modalImage").src = imageSrc;
       document.getElementById("imageModal").style.display = "flex";
-      document.getElementById("styleSelect").value = style.toLowerCase().replace(' ', '');
     }
-    
+
     function closeModal() {
       document.getElementById("imageModal").style.display = "none";
     }
