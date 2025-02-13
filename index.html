@@ -13,7 +13,7 @@
       padding: 0;
       font-family: 'Quicksand', sans-serif;
       background-color: white;
-      overflow: hidden; /* Prevent scrolling */
+      overflow: hidden;
     }
 
     /* Centering content in the screen */
@@ -24,30 +24,13 @@
       align-items: center;
       height: 100vh;
       text-align: center;
-      padding: 20px; /* Added padding around container */
+      padding: 20px;
       box-sizing: border-box;
       width: 100%;
     }
 
-    /* Heading and description styles */
-    h1 {
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-      color: #dc7878;
-      margin-bottom: 10px;
-      font-size: 2.5rem;
-    }
-
-    p {
-      color: black;
-      font-size: 1rem;
-      margin: 0 0 30px 0;
-      line-height: 1.6;
-      max-width: 80%;
-    }
-
-    /* Card options and images */
-    .card-options {
+    /* Carousel styles */
+    .carousel {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -56,41 +39,56 @@
       flex-wrap: wrap;
       gap: 20px;
       margin-bottom: 40px;
+      position: relative;
     }
 
-    .card-option {
-      position: relative;
-      width: 250px;
-      height: 250px;
-      background-color: white;
-      text-align: center;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
+    .carousel-images {
+      display: flex;
       transition: transform 0.3s ease;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-images img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
       flex-shrink: 0;
     }
 
-    .card-option img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .card-option:hover img {
-      transform: scale(1.1);
-    }
-
-    .card-option .subtitle {
+    .carousel-btns {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
+      top: 50%;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      transform: translateY(-50%);
+    }
+
+    .carousel-btn {
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
+      border: none;
+      font-size: 30px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Form and button styles */
+    input, select {
+      width: 250px;
+      height: 40px;
+      font-size: 16px;
       padding: 5px;
-      font-size: 14px;
-      font-weight: bold;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
     }
 
     .buy-now-btn {
@@ -103,50 +101,11 @@
       text-decoration: none;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      margin-top: 30px;
+      border: none;
     }
 
     .buy-now-btn:hover {
       background-color: #e68a8a;
-    }
-
-    /* Modal for enlarging images */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      overflow: auto;
-      padding-top: 60px;
-    }
-
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 90%;
-      object-fit: contain;
-    }
-
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #dc7878;
-      text-decoration: none;
-      cursor: pointer;
     }
 
     /* Mobile responsiveness */
@@ -155,78 +114,45 @@
         padding: 15px;
       }
 
-      h1 {
-        font-size: 2rem; /* Smaller heading on mobile */
+      .carousel-images img {
+        width: 90%;
+        height: auto;
       }
 
-      p {
-        font-size: 14px;
-        margin: 0 0 20px 0;
-        max-width: 90%; /* Reduced max width for mobile */
-      }
-
-      .card-options {
-        gap: 15px; /* Less gap between images on mobile */
-        margin-bottom: 20px;
-      }
-
-      .card-option {
-        width: 200px;
-        height: 200px; /* Smaller images for mobile */
-      }
-
-      .buy-now-btn {
-        padding: 10px 25px;
-        font-size: 14px;
+      .buy-now-btn, input, select {
+        width: 100%;
       }
     }
 
-    /* Smaller devices */
     @media (max-width: 480px) {
-      h1 {
-        font-size: 1.5rem;
+      .carousel-images img {
+        width: 100%;
+        height: auto;
       }
 
-      .card-option {
-        width: 180px;
-        height: 180px; /* Even smaller images on very small screens */
-      }
-
-      p {
-        font-size: 12px;
-        max-width: 85%;
-      }
-
-      .buy-now-btn {
+      .buy-now-btn, input, select {
+        width: 100%;
+        font-size: 14px;
         padding: 8px 20px;
-        font-size: 12px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Spread the Love this Valentine’s Day with a Kitten E-Card!</h1>
+    <!-- Carousel for images -->
+    <div class="carousel">
+      <div class="carousel-images">
+        <img src="kitten1.jpg" alt="Kitten Style 1">
+        <img src="kitten2.jpg" alt="Kitten Style 2">
+        <img src="kitten3.jpg" alt="Kitten Style 3">
+        <img src="kitten4.jpg" alt="Kitten Style 4">
+      </div>
 
-    <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
-
-    <!-- E-Card Options -->
-    <div class="card-options">
-      <div class="card-option">
-        <img src="kitten1.jpg" alt="Kitten Style 1" class="clickable-img">
-        <div class="subtitle">Style 1</div>
-      </div>
-      <div class="card-option">
-        <img src="kitten2.jpg" alt="Kitten Style 2" class="clickable-img">
-        <div class="subtitle">Style 2</div>
-      </div>
-      <div class="card-option">
-        <img src="kitten3.jpg" alt="Kitten Style 3" class="clickable-img">
-        <div class="subtitle">Style 3</div>
-      </div>
-      <div class="card-option">
-        <img src="kitten4.jpg" alt="Kitten Style 4" class="clickable-img">
-        <div class="subtitle">Style 4</div>
+      <!-- Carousel buttons -->
+      <div class="carousel-btns">
+        <button class="carousel-btn" onclick="moveCarousel(-1)">&#10094;</button>
+        <button class="carousel-btn" onclick="moveCarousel(1)">&#10095;</button>
       </div>
     </div>
 
@@ -248,31 +174,21 @@
     </div>
   </div>
 
-  <!-- Modal for Enlarged Image -->
-  <div id="modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg">
-  </div>
-
   <script>
-    // Get the modal
-    var modal = document.getElementById("modal");
-    var modalImg = document.getElementById("modalImg");
-    var images = document.querySelectorAll('.clickable-img');
-    
-    // Loop through all images and set up the click event
-    images.forEach(function(img) {
-      img.onclick = function() {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-      };
-    });
+    // Carousel functionality
+    let currentIndex = 0;
 
-    // Close the modal when clicked on close button
-    var close = document.getElementsByClassName("close")[0];
-    close.onclick = function() {
-      modal.style.display = "none";
-    };
+    function moveCarousel(direction) {
+      const images = document.querySelector('.carousel-images');
+      const totalImages = images.children.length;
+      currentIndex += direction;
+
+      if (currentIndex < 0) currentIndex = totalImages - 1;
+      if (currentIndex >= totalImages) currentIndex = 0;
+
+      const offset = -currentIndex * 100;
+      images.style.transform = `translateX(${offset}%)`;
+    }
   </script>
 </body>
 </html>
