@@ -19,16 +19,15 @@
 
     .container {
       display: flex;
+      flex-wrap: wrap; /* Allow for wrapping on smaller screens */
       width: 80vw;
       max-width: 900px;
       justify-content: space-between;
       gap: 20px;
-      flex-wrap: nowrap; /* Prevent stacking on smaller screens */
     }
 
-    /* Ensures the container is square */
     .image-section, .form-section {
-      width: 50%;
+      width: 48%; /* Take up 48% of the container to allow spacing */
       aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
       background: white;
       padding: 20px;
@@ -38,6 +37,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
     .thumbnail-container {
@@ -50,7 +50,7 @@
       justify-content: center;
     }
 
-    /* Ensure images fill the square container, keeping aspect ratio consistent */
+    /* Ensure the images are the same size and cover the square containers */
     .thumbnail {
       width: 100%;
       height: 100%;
@@ -58,8 +58,6 @@
       cursor: pointer;
       transition: transform 0.3s;
       border-radius: 5px;
-      max-width: 100%;  /* Prevent overflowing */
-      max-height: 100%; /* Prevent overflowing */
     }
 
     .thumbnail:hover {
@@ -120,16 +118,19 @@
       background-color: #e68a8a;
     }
 
-    /* Media query to adjust for smaller screens, no stacking */
+    /* Media query for smaller screens */
     @media (max-width: 768px) {
       .container {
-        gap: 10px; /* Reduce the gap for small screens */
+        flex-direction: column; /* Stack the containers vertically on mobile */
+        gap: 10px; /* Reduce the gap */
       }
+
       .image-section, .form-section {
-        width: 50%; /* Keep the containers side by side */
+        width: 100%; /* Ensure full width on mobile */
       }
+
       .thumbnail-container {
-        grid-template-columns: 1fr; /* Single column for the thumbnails */
+        grid-template-columns: 1fr; /* Single column for images */
       }
     }
   </style>
