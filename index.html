@@ -24,13 +24,26 @@
       margin: 20px;
       line-height: 1.6;
     }
+
+    /* Container for the images */
+    .card-options-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Individual card style */
     .card-option {
       display: inline-block;
       margin: 20px;
       width: 200px;
       position: relative;
       cursor: pointer;
+      transition: transform 0.3s ease;
     }
+
+    /* Image styling with hover effect to enlarge */
     .card-option img {
       width: 100%;
       height: 200px;
@@ -38,42 +51,39 @@
       object-fit: cover;
       transition: transform 0.3s ease;
     }
-    .card-option img:hover {
+
+    /* Enlarge on hover */
+    .card-option:hover img {
       transform: scale(1.1);
     }
 
-    /* Text overlay styling */
-    .card-option .overlay {
+    /* Hover effect: Change cursor to pointer */
+    .card-option:hover {
+      cursor: pointer;
+    }
+
+    /* Subtitle for style names */
+    .card-option .style-name {
       position: absolute;
-      top: 0;
+      bottom: 10px;
       left: 0;
       width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
       color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      visibility: hidden; /* Initially hidden */
+      padding: 5px;
+      font-size: 16px;
+      border-radius: 0 0 10px 10px;
     }
 
-    .card-option.active .overlay {
-      opacity: 1;
-      visibility: visible; /* Make visible when active */
-    }
-
-    /* Form styling */
+    /* Form container styling */
     .form-container {
       margin-top: 30px;
       padding: 20px;
       background-color: #f9f9f9;
       border-radius: 10px;
     }
+
     input[type="email"], select {
       padding: 10px;
       width: 80%;
@@ -82,6 +92,7 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
+
     .buy-now-btn {
       background-color: #dc7878;
       color: white;
@@ -163,65 +174,26 @@
 
   <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
 
-  <!-- E-Card Options with Text Overlay -->
+  <!-- E-Card Options with Style Names and Hover Effects -->
   <div class="card-options-container">
     <div class="card-option" onclick="selectCard(this, 'Style 1')">
       <img src="kitten1.jpg" alt="Kitten Style 1">
-      <div class="overlay">Style 1</div>
+      <div class="style-name">Style 1</div>
     </div>
     <div class="card-option" onclick="selectCard(this, 'Style 2')">
       <img src="kitten2.jpg" alt="Kitten Style 2">
-      <div class="overlay">Style 2</div>
+      <div class="style-name">Style 2</div>
     </div>
     <div class="card-option" onclick="selectCard(this, 'Style 3')">
       <img src="kitten3.jpg" alt="Kitten Style 3">
-      <div class="overlay">Style 3</div>
+      <div class="style-name">Style 3</div>
     </div>
     <div class="card-option" onclick="selectCard(this, 'Style 4')">
       <img src="kitten4.jpg" alt="Kitten Style 4">
-      <div class="overlay">Style 4</div>
+      <div class="style-name">Style 4</div>
     </div>
   </div>
 
   <!-- Donation Form -->
   <div class="form-container">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="custom" value="web_site">
-      <input type="hidden" name="hosted_button_id" value="BB2VNTGL2AR4N">
-      
-      <!-- Email input -->
-      <label for="email">Your Email</label><br>
-      <input type="email" name="email" id="email" required><br>
-
-      <!-- Style selection -->
-      <label for="style">Choose your Style</label><br>
-      <select name="style" id="style" required>
-        <option value="Style 1">Style 1</option>
-        <option value="Style 2">Style 2</option>
-        <option value="Style 3">Style 3</option>
-        <option value="Style 4">Style 4</option>
-      </select><br>
-
-      <!-- PayPal button -->
-      <button type="submit" class="buy-now-btn">Donate & Get Your E-Card</button>
-    </form>
-  </div>
-
-  <script>
-    // Function to activate the overlay on click
-    function selectCard(cardElement, style) {
-      // Set the style in the dropdown
-      document.getElementById("style").value = style;
-
-      // Toggle 'active' class to show overlay
-      var allCards = document.querySelectorAll('.card-option');
-      allCards.forEach(function(card) {
-        card.classList.remove('active');
-      });
-      cardElement.classList.add('active');
-    }
-  </script>
-
-</body>
-</html>
+    <form action="https://
