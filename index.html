@@ -59,10 +59,12 @@
       border-radius: 10px;
       opacity: 0;
       transition: opacity 0.3s ease;
+      visibility: hidden; /* Initially hidden */
     }
 
-    .card-option:hover .overlay {
+    .card-option.active .overlay {
       opacity: 1;
+      visibility: visible; /* Make visible when active */
     }
 
     /* Form styling */
@@ -163,28 +165,22 @@
 
   <!-- E-Card Options with Text Overlay -->
   <div class="card-options-container">
-    <div class="card-option" onclick="openModal('kitten1.jpg')">
+    <div class="card-option" onclick="selectCard(this, 'Style 1')">
       <img src="kitten1.jpg" alt="Kitten Style 1">
       <div class="overlay">Style 1</div>
     </div>
-    <div class="card-option" onclick="openModal('kitten2.jpg')">
+    <div class="card-option" onclick="selectCard(this, 'Style 2')">
       <img src="kitten2.jpg" alt="Kitten Style 2">
       <div class="overlay">Style 2</div>
     </div>
-    <div class="card-option" onclick="openModal('kitten3.jpg')">
+    <div class="card-option" onclick="selectCard(this, 'Style 3')">
       <img src="kitten3.jpg" alt="Kitten Style 3">
       <div class="overlay">Style 3</div>
     </div>
-    <div class="card-option" onclick="openModal('kitten4.jpg')">
+    <div class="card-option" onclick="selectCard(this, 'Style 4')">
       <img src="kitten4.jpg" alt="Kitten Style 4">
       <div class="overlay">Style 4</div>
     </div>
-  </div>
-
-  <!-- Modal for enlarging images -->
-  <div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImg">
   </div>
 
   <!-- Donation Form -->
@@ -213,18 +209,17 @@
   </div>
 
   <script>
-    // Open the modal with the selected image
-    function openModal(imageSrc) {
-      var modal = document.getElementById("modal");
-      var modalImg = document.getElementById("modalImg");
-      modal.style.display = "block";
-      modalImg.src = imageSrc;
-    }
+    // Function to activate the overlay on click
+    function selectCard(cardElement, style) {
+      // Set the style in the dropdown
+      document.getElementById("style").value = style;
 
-    // Close the modal
-    function closeModal() {
-      var modal = document.getElementById("modal");
-      modal.style.display = "none";
+      // Toggle 'active' class to show overlay
+      var allCards = document.querySelectorAll('.card-option');
+      allCards.forEach(function(card) {
+        card.classList.remove('active');
+      });
+      cardElement.classList.add('active');
     }
   </script>
 
