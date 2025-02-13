@@ -9,9 +9,9 @@
     body {
       font-family: 'Quicksand', sans-serif;
       text-align: center;
-      background-color: #FAE1DD; /* Soft blush pink */
+      background-color: white;
+      color: #dc7878; /* Coral red */
       padding: 20px;
-      color: #9B2226; /* Deep rose */
     }
     h1 {
       font-size: 28px;
@@ -27,21 +27,21 @@
     .card-option {
       width: 260px;
       padding: 15px;
-      background-color: #FFFFFF; /* Clean white background */
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+      background-color: white; /* White background for the card */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
       border-radius: 10px;
       text-align: center;
     }
     .card-option img {
       max-width: 100%;
       border-radius: 10px;
-      cursor: pointer; /* Indicating the image is clickable */
+      cursor: pointer;
     }
     .paypal-button {
       margin-top: 10px;
       display: inline-block;
       text-decoration: none;
-      background-color: #9B2226; /* Deep rose */
+      background-color: #dc7878; /* Coral red */
       color: white;
       font-size: 16px;
       font-weight: 600;
@@ -52,7 +52,7 @@
       transition: 0.3s;
     }
     .paypal-button:hover {
-      background-color: #7A1B1F; /* Slightly darker on hover */
+      background-color: #b96d6d; /* Slightly darker red on hover */
     }
 
     /* Modal styles */
@@ -105,10 +105,10 @@
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style1 E-Card">
+        <input type="hidden" name="item_name" value="Kitten with Hearts E-Card">
         <input type="hidden" name="amount" value="5.00">
         <input type="hidden" name="currency_code" value="USD">
-        <button type="submit" class="paypal-button">Style 1</button>
+        <button type="submit" class="paypal-button">Kitten with Hearts - $5</button>
       </form>
     </div>
 
@@ -118,10 +118,10 @@
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style2 E-Card">
+        <input type="hidden" name="item_name" value="Kitten with Roses E-Card">
         <input type="hidden" name="amount" value="5.00">
         <input type="hidden" name="currency_code" value="USD">
-        <button type="submit" class="paypal-button">Style 2</button>
+        <button type="submit" class="paypal-button">Kitten with Roses - $5</button>
       </form>
     </div>
 
@@ -131,10 +131,10 @@
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style3 E-Card">
+        <input type="hidden" name="item_name" value="Kitten in a Cup E-Card">
         <input type="hidden" name="amount" value="5.00">
         <input type="hidden" name="currency_code" value="USD">
-        <button type="submit" class="paypal-button">Style 3</button>
+        <button type="submit" class="paypal-button">Kitten in a Cup - $5</button>
       </form>
     </div>
 
@@ -144,10 +144,10 @@
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style4 E-Card">
+        <input type="hidden" name="item_name" value="Kitten with Balloons E-Card">
         <input type="hidden" name="amount" value="5.00">
         <input type="hidden" name="currency_code" value="USD">
-        <button type="submit" class="paypal-button">Style 4 </button>
+        <button type="submit" class="paypal-button">Kitten with Balloons - $5</button>
       </form>
     </div>
   </div>
