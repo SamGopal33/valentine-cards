@@ -109,25 +109,25 @@
   <!-- E-Card Option 1 -->
   <div class="card-option">
     <img src="kitten1.jpg" alt="Kitten Style 1" id="img1" class="clickable-img">
-    <a href="your-payment-link-1" class="buy-now-btn">Buy Now - Style 1</a>
+    <a href="your-payment-link-1" class="buy-now-btn" id="buy-btn-1" data-style="Style 1">Style 1</a>
   </div>
 
   <!-- E-Card Option 2 -->
   <div class="card-option">
     <img src="kitten2.jpg" alt="Kitten Style 2" id="img2" class="clickable-img">
-    <a href="your-payment-link-2" class="buy-now-btn">Buy Now - Style 2</a>
+    <a href="your-payment-link-2" class="buy-now-btn" id="buy-btn-2" data-style="Style 2">Style 2</a>
   </div>
 
   <!-- E-Card Option 3 -->
   <div class="card-option">
     <img src="kitten3.jpg" alt="Kitten Style 3" id="img3" class="clickable-img">
-    <a href="your-payment-link-3" class="buy-now-btn">Buy Now - Style 3</a>
+    <a href="your-payment-link-3" class="buy-now-btn" id="buy-btn-3" data-style="Style 3">Style 3</a>
   </div>
 
   <!-- E-Card Option 4 -->
   <div class="card-option">
     <img src="kitten4.jpg" alt="Kitten Style 4" id="img4" class="clickable-img">
-    <a href="your-payment-link-4" class="buy-now-btn">Buy Now - Style 4</a>
+    <a href="your-payment-link-4" class="buy-now-btn" id="buy-btn-4" data-style="Style 4">Style 4</a>
   </div>
 
   <!-- Modal for enlarging images -->
@@ -157,6 +157,17 @@
     closeBtn.onclick = function() {
       modal.style.display = "none";
     }
+
+    // Add event listeners to the "Buy Now" buttons
+    var buyBtns = document.querySelectorAll('.buy-now-btn');
+
+    buyBtns.forEach(function(btn) {
+      btn.addEventListener('click', function(event) {
+        var selectedStyle = btn.getAttribute('data-style');
+        console.log('Selected Style: ' + selectedStyle);
+        // You can use the selectedStyle here for tracking or passing to PayPal
+      });
+    });
   </script>
 
 </body>
