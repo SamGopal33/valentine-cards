@@ -9,34 +9,43 @@
     body {
       font-family: Arial, sans-serif;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       margin: 0;
       background-color: #f0f0f0;
       padding: 20px;
-      overflow: hidden;
+      height: 100vh;
     }
 
-    /* Main container to prevent overflow */
+    /* Main container to hold both sections */
     .container {
-      width: 100vw;
-      max-width: 100%;
-      overflow: hidden;
+      display: flex;
+      width: 80vw;
+      max-width: 900px;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    /* Thumbnail container */
+    /* Image Section */
+    .image-section, .form-section {
+      width: 50%;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
     .thumbnail-container {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 10px;
     }
 
-    /* Thumbnail images */
     .thumbnail {
-      max-height: 30vh; /* Adjust dynamically */
-      object-fit: contain; /* Maintain aspect ratio */
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -45,7 +54,6 @@
       transform: scale(1.05);
     }
 
-    /* Subtitles */
     .subtitle {
       font-family: 'Quicksand', sans-serif;
       color: #dc7878;
@@ -75,13 +83,7 @@
 
     /* Donate Form */
     .form-container {
-      margin-top: 20px;
       text-align: center;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
 
     input[type="email"], select, button {
@@ -112,48 +114,51 @@
 <body>
   
   <div class="container">
-    <!-- Thumbnails -->
-    <div class="thumbnail-container">
-      <div>
-        <img src="kitten1.jpg" alt="Kitten 1" class="thumbnail" onclick="openModal('kitten1.jpg')">
-        <div class="subtitle">Style 1</div>
-      </div>
-      <div>
-        <img src="kitten2.jpg" alt="Kitten 2" class="thumbnail" onclick="openModal('kitten2.jpg')">
-        <div class="subtitle">Style 2</div>
-      </div>
-      <div>
-        <img src="kitten3.jpg" alt="Kitten 3" class="thumbnail" onclick="openModal('kitten3.jpg')">
-        <div class="subtitle">Style 3</div>
-      </div>
-      <div>
-        <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')">
-        <div class="subtitle">Style 4</div>
+    <!-- Image Section -->
+    <div class="image-section">
+      <div class="thumbnail-container">
+        <div>
+          <img src="kitten1.jpg" alt="Kitten 1" class="thumbnail" onclick="openModal('kitten1.jpg')">
+          <div class="subtitle">Style 1</div>
+        </div>
+        <div>
+          <img src="kitten2.jpg" alt="Kitten 2" class="thumbnail" onclick="openModal('kitten2.jpg')">
+          <div class="subtitle">Style 2</div>
+        </div>
+        <div>
+          <img src="kitten3.jpg" alt="Kitten 3" class="thumbnail" onclick="openModal('kitten3.jpg')">
+          <div class="subtitle">Style 3</div>
+        </div>
+        <div>
+          <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')">
+          <div class="subtitle">Style 4</div>
+        </div>
       </div>
     </div>
   
-    <!-- Modal -->
-    <div class="modal" id="imageModal" onclick="closeModal()">
-      <img id="modalImage" src="" alt="Expanded Image">
+    <!-- Donate Form Section -->
+    <div class="form-section">
+      <div class="form-container">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input name="cmd" type="hidden" value="_s-xclick">
+          <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+          <input name="custom" type="hidden" value="web_site">
+          
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <select name="style" id="styleSelect" required>
+            <option value="style1">Style 1</option>
+            <option value="style2">Style 2</option>
+            <option value="style3">Style 3</option>
+            <option value="style4">Style 4</option>
+          </select>
+          <button type="submit" class="submit-btn">Donate and Get Your E-Card</button>
+        </form>
+      </div>
     </div>
-  
-    <!-- Donate Form -->
-    <div class="form-container">
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input name="cmd" type="hidden" value="_s-xclick">
-        <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-        <input name="custom" type="hidden" value="web_site">
-        
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <select name="style" id="styleSelect" required>
-          <option value="style1">Style 1</option>
-          <option value="style2">Style 2</option>
-          <option value="style3">Style 3</option>
-          <option value="style4">Style 4</option>
-        </select>
-        <button type="submit" class="submit-btn">Donate and Get Your E-Card</button>
-      </form>
-    </div>
+  </div>
+
+  <div class="modal" id="imageModal" onclick="closeModal()">
+    <img id="modalImage" src="" alt="Expanded Image">
   </div>
 
   <script>
