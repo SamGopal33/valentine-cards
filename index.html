@@ -42,56 +42,37 @@
     .card-option img:hover {
       transform: scale(1.1);
     }
-    .buy-now-btn {
-      display: block;
-      margin-top: 10px;
+
+    .form-container {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-container input, .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .form-container button {
       background-color: #dc7878;
       color: white;
-      padding: 15px 30px;
-      text-align: center;
+      padding: 10px 20px;
       font-size: 16px;
-      text-decoration: none;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    .buy-now-btn:hover {
+
+    .form-container button:hover {
       background-color: #e68a8a;
-    }
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      overflow: auto;
-      padding-top: 60px;
-    }
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 80%;
-      max-height: 80%;
-      object-fit: contain;
-    }
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .close:hover,
-    .close:focus {
-      color: #dc7878;
-      text-decoration: none;
-      cursor: pointer;
     }
   </style>
 </head>
@@ -100,82 +81,41 @@
 
   <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
 
-  <!-- E-Card Option 1 -->
-  <div class="card-option">
-    <img src="kitten1.jpg" alt="Kitten Style 1" class="clickable-img">
+  <!-- E-Card Style Selection -->
+  <div class="form-container">
+    <h2>Choose Your E-Card Style</h2>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input name="cmd" type="hidden" value="_s-xclick">
-      <input name="custom" type="hidden" value="web_site">
-      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
-      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
-    </form>
-  </div>
+      <!-- PayPal details -->
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="BB2VNTGL2AR4N"> <!-- Alley Cat Project PayPal Button ID -->
 
-  <!-- E-Card Option 2 -->
-  <div class="card-option">
-    <img src="kitten2.jpg" alt="Kitten Style 2" class="clickable-img">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input name="cmd" type="hidden" value="_s-xclick">
-      <input name="custom" type="hidden" value="web_site">
-      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
-      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
-    </form>
-  </div>
+      <!-- Collect email and style selection -->
+      <label for="email">Your Email Address:</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email" />
 
-  <!-- E-Card Option 3 -->
-  <div class="card-option">
-    <img src="kitten3.jpg" alt="Kitten Style 3" class="clickable-img">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input name="cmd" type="hidden" value="_s-xclick">
-      <input name="custom" type="hidden" value="web_site">
-      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
-      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
-    </form>
-  </div>
+      <label for="style">Choose Style:</label>
+      <select name="style" id="style" required>
+        <option value="Style 1">Style 1</option>
+        <option value="Style 2">Style 2</option>
+        <option value="Style 3">Style 3</option>
+        <option value="Style 4">Style 4</option>
+      </select>
 
-  <!-- E-Card Option 4 -->
-  <div class="card-option">
-    <img src="kitten4.jpg" alt="Kitten Style 4" class="clickable-img">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input name="cmd" type="hidden" value="_s-xclick">
-      <input name="custom" type="hidden" value="web_site">
-      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
-      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
-    </form>
-  </div>
+      <!-- Hidden input to pass selected style and email to PayPal -->
+      <input type="hidden" id="custom" name="custom" value="">
 
-  <!-- Modal for enlarging images -->
-  <div id="modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg">
+      <button type="submit">Donate and Get E-Card</button>
+    </form>
   </div>
 
   <script>
-    // Get the modal
-    var modal = document.getElementById("modal");
-    var modalImg = document.getElementById("modalImg");
-    var images = document.querySelectorAll('.clickable-img');
-    
-    // Loop through all images and set up the click event
-    images.forEach(function(img) {
-      img.onclick = function() {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-      }
+    // Set the custom field to include the selected style and email before submitting the form
+    document.querySelector('form').addEventListener('submit', function(e) {
+      var email = document.getElementById('email').value;
+      var style = document.getElementById('style').value;
+      var customField = document.getElementById('custom');
+      customField.value = `Email: ${email}, Style: ${style}`;
     });
-
-    // Get the close button
-    var closeBtn = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the close button, close the modal
-    closeBtn.onclick = function() {
-      modal.style.display = "none";
-    }
   </script>
-
 </body>
 </html>
