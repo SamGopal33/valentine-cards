@@ -56,18 +56,33 @@
       background-color: rgba(220, 120, 120, 0.8);
       color: white;
       border: none;
-      padding: 10px;
+      padding: 15px;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 24px;
       z-index: 10;
+      border-radius: 50%;
     }
 
     .arrow-left {
-      left: 10px;
+      left: -40px;
     }
 
     .arrow-right {
-      right: 10px;
+      right: -40px;
+    }
+
+    /* Adjust for mobile screens */
+    @media (max-width: 600px) {
+      .arrow {
+        padding: 10px;
+        font-size: 20px;
+      }
+      .arrow-left {
+        left: 5px;
+      }
+      .arrow-right {
+        right: 5px;
+      }
     }
 
     /* Donate Form */
