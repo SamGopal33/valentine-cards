@@ -29,7 +29,8 @@
       padding: 10px;
       background-color: white;
       text-align: center;
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
       position: relative;
       overflow: hidden;
     }
@@ -80,6 +81,8 @@
       display: flex;
       justify-content: center;
       gap: 20px;
+      flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+      margin-top: 20px;
     }
 
     /* Modal styles */
@@ -119,6 +122,41 @@
       color: #dc7878;
       text-decoration: none;
       cursor: pointer;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .images-container {
+        flex-direction: column; /* Stack images vertically on smaller screens */
+        align-items: center;
+      }
+
+      .card-option {
+        max-width: 90%; /* Make images take more width on smaller screens */
+      }
+
+      .form-container {
+        width: 100%;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 24px; /* Adjust header size for mobile */
+      }
+
+      p {
+        font-size: 14px; /* Adjust paragraph size for mobile */
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
