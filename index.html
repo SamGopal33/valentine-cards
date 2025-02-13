@@ -74,6 +74,12 @@
     .form-container button:hover {
       background-color: #e68a8a;
     }
+
+    .images-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
   </style>
 </head>
 <body>
@@ -81,7 +87,27 @@
 
   <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
 
-  <!-- E-Card Style Selection -->
+  <!-- E-Card Style Display -->
+  <div class="images-container">
+    <div class="card-option">
+      <img src="kitten1.jpg" alt="Kitten Style 1">
+      <p>Style 1</p>
+    </div>
+    <div class="card-option">
+      <img src="kitten2.jpg" alt="Kitten Style 2">
+      <p>Style 2</p>
+    </div>
+    <div class="card-option">
+      <img src="kitten3.jpg" alt="Kitten Style 3">
+      <p>Style 3</p>
+    </div>
+    <div class="card-option">
+      <img src="kitten4.jpg" alt="Kitten Style 4">
+      <p>Style 4</p>
+    </div>
+  </div>
+
+  <!-- E-Card Selection Form -->
   <div class="form-container">
     <h2>Choose Your E-Card Style</h2>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
