@@ -11,42 +11,44 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       margin: 0;
       background-color: #f0f0f0;
+      padding: 20px;
     }
 
+    /* Carousel container */
     .carousel-container {
       position: relative;
       width: 80%;
       max-width: 600px;
-      height: 350px; /* Fixed height based on landscape images */
+      height: auto;
       overflow: hidden;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
+    /* Image container */
     .carousel img {
-      position: absolute;
       width: 100%;
-      height: 100%;
-      object-fit: contain; /* Ensures aspect ratio is maintained */
-      transition: opacity 0.5s ease-in-out;
-      opacity: 0;
+      max-height: 350px;
+      object-fit: contain;
+      display: none;
     }
 
     .carousel img.active {
-      opacity: 1;
+      display: block;
     }
 
+    /* Caption */
     .carousel-caption {
-      text-align: center;
       margin-top: 10px;
       font-size: 18px;
       font-weight: bold;
+      text-align: center;
     }
 
+    /* Navigation arrows */
     .arrow {
       position: absolute;
       top: 50%;
@@ -68,6 +70,7 @@
       right: 10px;
     }
 
+    /* Donate Form */
     .form-container {
       margin-top: 20px;
       text-align: center;
@@ -76,12 +79,12 @@
     }
 
     input[type="email"], select, button {
-      padding: 10px;
+      padding: 12px;
       margin: 5px;
       font-size: 16px;
       width: 100%;
-      max-width: 400px;
       box-sizing: border-box;
+      border-radius: 5px;
     }
 
     .submit-btn {
@@ -95,6 +98,7 @@
     .submit-btn:hover {
       background-color: #e68a8a;
     }
+
   </style>
 </head>
 <body>
@@ -102,10 +106,12 @@
   <!-- Carousel -->
   <div class="carousel-container">
     <button class="arrow arrow-left" onclick="prevImage()">&#10094;</button>
-    <img src="kitten1.jpg" alt="Kitten 1" class="active">
-    <img src="kitten2.jpg" alt="Kitten 2">
-    <img src="kitten3.jpg" alt="Kitten 3">
-    <img src="kitten4.jpg" alt="Kitten 4">
+    <div class="carousel">
+      <img src="kitten1.jpg" alt="Kitten 1" class="active">
+      <img src="kitten2.jpg" alt="Kitten 2">
+      <img src="kitten3.jpg" alt="Kitten 3">
+      <img src="kitten4.jpg" alt="Kitten 4">
+    </div>
     <button class="arrow arrow-right" onclick="nextImage()">&#10095;</button>
   </div>
 
@@ -139,8 +145,6 @@
         img.classList.toggle("active", index === currentIndex);
       });
       document.getElementById("caption").innerText = captions[currentIndex];
-
-      // Update selected style in dropdown
       document.getElementById("styleSelect").value = `style${currentIndex + 1}`;
     }
 
@@ -154,7 +158,7 @@
       updateCarousel();
     }
 
-    updateCarousel(); // Initialize
+    updateCarousel();
   </script>
 
 </body>
