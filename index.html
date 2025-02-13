@@ -27,19 +27,42 @@
     .card-option {
       display: inline-block;
       margin: 20px;
-      width: 200px; /* Set width for uniformity */
+      width: 200px;
       position: relative;
       cursor: pointer;
     }
     .card-option img {
       width: 100%;
-      height: 200px; /* Fixed height for uniformity */
+      height: 200px;
       border-radius: 10px;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
     .card-option img:hover {
       transform: scale(1.1);
+    }
+
+    /* Text overlay styling */
+    .card-option .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-option:hover .overlay {
+      opacity: 1;
     }
 
     /* Form styling */
@@ -138,19 +161,23 @@
 
   <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
 
-  <!-- E-Card Options -->
+  <!-- E-Card Options with Text Overlay -->
   <div class="card-options-container">
     <div class="card-option" onclick="openModal('kitten1.jpg')">
       <img src="kitten1.jpg" alt="Kitten Style 1">
+      <div class="overlay">Style 1</div>
     </div>
     <div class="card-option" onclick="openModal('kitten2.jpg')">
       <img src="kitten2.jpg" alt="Kitten Style 2">
+      <div class="overlay">Style 2</div>
     </div>
     <div class="card-option" onclick="openModal('kitten3.jpg')">
       <img src="kitten3.jpg" alt="Kitten Style 3">
+      <div class="overlay">Style 3</div>
     </div>
     <div class="card-option" onclick="openModal('kitten4.jpg')">
       <img src="kitten4.jpg" alt="Kitten Style 4">
+      <div class="overlay">Style 4</div>
     </div>
   </div>
 
