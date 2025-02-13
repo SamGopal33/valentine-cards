@@ -8,12 +8,13 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-color: #FAF3F0; /* Soft blush pink */
+      background-color: #F3E8FF; /* Soft lavender */
       padding: 20px;
-      color: #333333; /* Dark gray for readability */
+      color: #5D3A9B; /* Deep plum */
     }
     h1 {
-      color: #A23E48; /* Deep berry */
+      color: #5D3A9B;
+      font-size: 28px;
     }
     .cards-container {
       display: flex;
@@ -23,12 +24,12 @@
       margin-top: 20px;
     }
     .card-option {
-      width: 250px;
-      border: 2px solid #A23E48; /* Berry-colored border */
-      border-radius: 10px;
+      width: 260px;
+      border: 2px solid #5D3A9B; /* Deep plum border */
+      border-radius: 12px;
       padding: 15px;
-      background-color: #FFF1F3; /* Light rose */
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      background-color: #FFE4EC; /* Pale pink */
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease-in-out;
     }
     .card-option:hover {
@@ -38,16 +39,28 @@
       max-width: 100%;
       border-radius: 10px;
     }
-    .paypal-button {
+    .buy-button {
+      display: inline-block;
       margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(to right, #FF758C, #FF7EB3);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
     }
-    .paypal-button input[type="image"] {
-      width: 120px;
+    .buy-button:hover {
+      background: linear-gradient(to right, #FF7EB3, #FF758C);
+      transform: scale(1.05);
     }
     footer {
       margin-top: 30px;
       font-size: 14px;
-      color: #E63946; /* Warm coral */
+      color: #5D3A9B;
     }
   </style>
 </head>
@@ -61,56 +74,28 @@
     <div class="card-option">
       <img src="kitten1.jpg" alt="Style 1">
       <p>Style 1</p>
-      <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style 1">
-        <input type="hidden" name="amount" value="5.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      </form>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=your-paypal-email@example.com&item_name=Style+1&amount=5.00&currency_code=USD" class="buy-button">Buy Now - $5</a>
     </div>
 
     <!-- E-Card Option 2 -->
     <div class="card-option">
       <img src="kitten2.jpg" alt="Style 2">
       <p>Style 2</p>
-      <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style 2">
-        <input type="hidden" name="amount" value="5.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      </form>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=your-paypal-email@example.com&item_name=Style+2&amount=5.00&currency_code=USD" class="buy-button">Buy Now - $5</a>
     </div>
 
     <!-- E-Card Option 3 -->
     <div class="card-option">
       <img src="kitten3.jpg" alt="Style 3">
       <p>Style 3</p>
-      <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style 3">
-        <input type="hidden" name="amount" value="5.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      </form>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=your-paypal-email@example.com&item_name=Style+3&amount=5.00&currency_code=USD" class="buy-button">Buy Now - $5</a>
     </div>
 
     <!-- E-Card Option 4 -->
     <div class="card-option">
       <img src="kitten4.jpg" alt="Style 4">
       <p>Style 4</p>
-      <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" value="Style 4">
-        <input type="hidden" name="amount" value="5.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      </form>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=your-paypal-email@example.com&item_name=Style+4&amount=5.00&currency_code=USD" class="buy-button">Buy Now - $5</a>
     </div>
     
   </div>
