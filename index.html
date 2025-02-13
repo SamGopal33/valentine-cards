@@ -11,7 +11,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       background-color: #f0f0f0;
     }
@@ -20,19 +20,24 @@
       position: relative;
       width: 80%;
       max-width: 600px;
+      height: 350px; /* Fixed height based on landscape images */
       overflow: hidden;
-    }
-
-    .carousel {
       display: flex;
-      transition: transform 0.5s ease-in-out;
+      align-items: center;
+      justify-content: center;
     }
 
     .carousel img {
+      position: absolute;
       width: 100%;
-      height: auto;
-      max-height: 350px; /* Adjust based on landscape image height */
-      object-fit: contain; /* Keeps aspect ratio */
+      height: 100%;
+      object-fit: contain; /* Ensures aspect ratio is maintained */
+      transition: opacity 0.5s ease-in-out;
+      opacity: 0;
+    }
+
+    .carousel img.active {
+      opacity: 1;
     }
 
     .carousel-caption {
@@ -56,11 +61,11 @@
     }
 
     .arrow-left {
-      left: 0;
+      left: 10px;
     }
 
     .arrow-right {
-      right: 0;
+      right: 10px;
     }
 
     .form-container {
@@ -97,15 +102,14 @@
   <!-- Carousel -->
   <div class="carousel-container">
     <button class="arrow arrow-left" onclick="prevImage()">&#10094;</button>
-    <div class="carousel">
-      <img src="kitten1.jpg" alt="Kitten 1">
-      <img src="kitten2.jpg" alt="Kitten 2">
-      <img src="kitten3.jpg" alt="Kitten 3">
-      <img src="kitten4.jpg" alt="Kitten 4">
-    </div>
-    <div class="carousel-caption" id="caption">Style 1</div>
+    <img src="kitten1.jpg" alt="Kitten 1" class="active">
+    <img src="kitten2.jpg" alt="Kitten 2">
+    <img src="kitten3.jpg" alt="Kitten 3">
+    <img src="kitten4.jpg" alt="Kitten 4">
     <button class="arrow arrow-right" onclick="nextImage()">&#10095;</button>
   </div>
+
+  <div class="carousel-caption" id="caption">Style 1</div>
 
   <!-- Donate Form -->
   <div class="form-container">
@@ -131,8 +135,9 @@
     let currentIndex = 0;
 
     function updateCarousel() {
-      const carousel = document.querySelector(".carousel");
-      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      images.forEach((img, index) => {
+        img.classList.toggle("active", index === currentIndex);
+      });
       document.getElementById("caption").innerText = captions[currentIndex];
 
       // Update selected style in dropdown
