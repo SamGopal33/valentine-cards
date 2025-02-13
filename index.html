@@ -18,19 +18,16 @@
       flex-direction: column;
     }
 
-    /* Main container to hold both sections */
     .container {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       width: 100%;
       max-width: 900px;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
     }
 
-    /* Image Section */
     .image-section, .form-section {
-      width: 48%; /* Adjust to 48% for responsiveness */
+      width: 48%;
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -45,22 +42,16 @@
     }
 
     .thumbnail-wrapper {
-      width: 100%; /* Full width */
-      height: 200px; /* You can adjust this to match your landscape image height */
-      overflow: hidden; /* Prevent images from overflowing the container */
-      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
     }
 
     .thumbnail {
-      width: 100%; /* Make image width 100% of the container */
-      height: 100%; /* Match the height of the wrapper */
-      object-fit: cover; /* Ensure images maintain aspect ratio and fill the container */
-      transition: transform 0.3s;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       cursor: pointer;
-    }
-
-    .thumbnail:hover {
-      transform: scale(1.05);
     }
 
     .subtitle {
@@ -72,7 +63,6 @@
       margin-top: 5px;
     }
 
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -90,7 +80,6 @@
       max-height: 90%;
     }
 
-    /* Donate Form */
     .form-container {
       text-align: center;
     }
@@ -119,21 +108,6 @@
       background-color: #e68a8a;
     }
 
-    /* Responsive Styles */
-    @media screen and (max-width: 768px) {
-      .image-section, .form-section {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .thumbnail-wrapper {
-        height: 150px; /* Adjust image height for smaller screens */
-      }
-
-      .thumbnail {
-        object-fit: cover;
-      }
-    }
   </style>
 </head>
 <body>
