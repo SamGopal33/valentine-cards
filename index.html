@@ -19,14 +19,15 @@
 
     .container {
       display: flex;
+      flex-direction: column;
       width: 80vw;
       max-width: 900px;
-      justify-content: space-between;
+      justify-content: center;
       gap: 20px;
     }
 
-    .image-section, .form-section {
-      width: 50%;
+    .image-section {
+      width: 100%;
       aspect-ratio: 1 / 1;
       background: white;
       padding: 20px;
@@ -36,6 +37,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 20px;
     }
 
     .thumbnail-container {
@@ -45,7 +47,7 @@
       width: 100%;
       height: 100%;
       align-items: center;
-      justify-content: center;
+      justify-items: center;
     }
 
     .thumbnail {
@@ -54,6 +56,7 @@
       object-fit: cover;
       cursor: pointer;
       transition: transform 0.3s;
+      border-radius: 5px;
     }
 
     .thumbnail:hover {
@@ -86,6 +89,14 @@
       max-height: 90%;
     }
 
+    .form-section {
+      width: 100%;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
     .form-container {
       text-align: center;
     }
@@ -113,6 +124,13 @@
     .submit-btn:hover {
       background-color: #e68a8a;
     }
+
+    /* Make the images responsive */
+    @media (max-width: 768px) {
+      .thumbnail-container {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -133,7 +151,7 @@
           <div class="subtitle">Style 3</div>
         </div>
         <div>
-          <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')" style="object-fit: cover;">
+          <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')">
           <div class="subtitle">Style 4</div>
         </div>
       </div>
