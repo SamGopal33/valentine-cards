@@ -29,7 +29,7 @@
       padding: 10px;
       background-color: white;
       text-align: center;
-      width: 300px; /* Set width for uniformity */
+      width: 300px;
       position: relative;
     }
     .card-option img {
@@ -42,7 +42,6 @@
     .card-option img:hover {
       transform: scale(1.1);
     }
-
     .buy-now-btn {
       display: block;
       margin-top: 10px;
@@ -56,11 +55,9 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
     .buy-now-btn:hover {
       background-color: #e68a8a;
     }
-
     /* Modal styles */
     .modal {
       display: none;
@@ -74,7 +71,6 @@
       overflow: auto;
       padding-top: 60px;
     }
-
     .modal-content {
       margin: auto;
       display: block;
@@ -82,7 +78,6 @@
       max-height: 80%;
       object-fit: contain;
     }
-
     .close {
       position: absolute;
       top: 15px;
@@ -92,7 +87,6 @@
       font-weight: bold;
       transition: 0.3s;
     }
-
     .close:hover,
     .close:focus {
       color: #dc7878;
@@ -108,26 +102,50 @@
 
   <!-- E-Card Option 1 -->
   <div class="card-option">
-    <img src="kitten1.jpg" alt="Kitten Style 1" id="img1" class="clickable-img">
-    <a href="your-payment-link-1" class="buy-now-btn" id="buy-btn-1" data-style="Style 1">Style 1</a>
+    <img src="kitten1.jpg" alt="Kitten Style 1" class="clickable-img">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input name="cmd" type="hidden" value="_s-xclick">
+      <input name="custom" type="hidden" value="web_site">
+      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
+      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
+    </form>
   </div>
 
   <!-- E-Card Option 2 -->
   <div class="card-option">
-    <img src="kitten2.jpg" alt="Kitten Style 2" id="img2" class="clickable-img">
-    <a href="your-payment-link-2" class="buy-now-btn" id="buy-btn-2" data-style="Style 2">Style 2</a>
+    <img src="kitten2.jpg" alt="Kitten Style 2" class="clickable-img">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input name="cmd" type="hidden" value="_s-xclick">
+      <input name="custom" type="hidden" value="web_site">
+      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
+      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
+    </form>
   </div>
 
   <!-- E-Card Option 3 -->
   <div class="card-option">
-    <img src="kitten3.jpg" alt="Kitten Style 3" id="img3" class="clickable-img">
-    <a href="your-payment-link-3" class="buy-now-btn" id="buy-btn-3" data-style="Style 3">Style 3</a>
+    <img src="kitten3.jpg" alt="Kitten Style 3" class="clickable-img">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input name="cmd" type="hidden" value="_s-xclick">
+      <input name="custom" type="hidden" value="web_site">
+      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
+      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
+    </form>
   </div>
 
   <!-- E-Card Option 4 -->
   <div class="card-option">
-    <img src="kitten4.jpg" alt="Kitten Style 4" id="img4" class="clickable-img">
-    <a href="your-payment-link-4" class="buy-now-btn" id="buy-btn-4" data-style="Style 4">Style 4</a>
+    <img src="kitten4.jpg" alt="Kitten Style 4" class="clickable-img">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input name="cmd" type="hidden" value="_s-xclick">
+      <input name="custom" type="hidden" value="web_site">
+      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+      <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
+      <img decoding="async" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0">
+    </form>
   </div>
 
   <!-- Modal for enlarging images -->
@@ -157,17 +175,6 @@
     closeBtn.onclick = function() {
       modal.style.display = "none";
     }
-
-    // Add event listeners to the "Buy Now" buttons
-    var buyBtns = document.querySelectorAll('.buy-now-btn');
-
-    buyBtns.forEach(function(btn) {
-      btn.addEventListener('click', function(event) {
-        var selectedStyle = btn.getAttribute('data-style');
-        console.log('Selected Style: ' + selectedStyle);
-        // You can use the selectedStyle here for tracking or passing to PayPal
-      });
-    });
   </script>
 
 </body>
