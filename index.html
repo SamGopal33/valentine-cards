@@ -6,83 +6,88 @@
   <title>Valentine Kitten E-Cards</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Quicksand&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Quicksand', sans-serif;
       text-align: center;
       background-color: white;
-      padding: 20px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Set height of body to viewport height */
     }
+
     h1 {
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
       color: #dc7878;
+      font-size: 1.5em;
+      margin: 10px;
     }
+
     p {
       color: black;
-      font-size: 16px;
-      margin: 20px;
-      line-height: 1.6;
+      font-size: 14px;
+      margin: 10px;
+      line-height: 1.5;
+      width: 90%;
+      max-width: 400px;
     }
-    .card-option {
-      display: inline-block;
-      margin: 20px;
-      padding: 10px;
-      background-color: white;
-      text-align: center;
+
+    .card-options-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       width: 100%;
-      max-width: 300px;
-      position: relative;
-      overflow: hidden;
+      margin-top: 20px;
     }
+
+    .card-option {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      width: 45%; /* Adjust width to make them fit properly */
+      max-width: 300px;
+    }
+
     .card-option img {
       width: 100%;
-      height: 250px; /* Set a fixed height */
-      object-fit: cover; /* Preserve aspect ratio */
+      height: auto;
+      max-height: 250px;
       border-radius: 10px;
       transition: transform 0.3s ease;
+      object-fit: cover;
     }
+
     .card-option img:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
-    .form-container {
-      margin-top: 30px;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .form-container input, .form-container select {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-    }
-
-    .form-container button {
+    .buy-now-btn {
+      display: block;
+      margin-top: 10px;
       background-color: #dc7878;
       color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
+      padding: 12px 25px;
+      text-align: center;
+      font-size: 14px;
+      text-decoration: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    .form-container button:hover {
+    .buy-now-btn:hover {
       background-color: #e68a8a;
-    }
-
-    .images-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap; /* Allow images to wrap on smaller screens */
-      margin-top: 20px;
     }
 
     /* Modal styles */
@@ -124,37 +129,32 @@
       cursor: pointer;
     }
 
-    /* Responsive adjustments */
-    @media screen and (max-width: 768px) {
-      .images-container {
-        flex-direction: column; /* Stack images vertically on smaller screens */
-        align-items: center;
-      }
-
-      .card-option {
-        max-width: 90%; /* Make images take more width on smaller screens */
-      }
-
-      .form-container {
-        width: 100%;
-        padding: 15px;
-      }
-
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
       h1 {
-        font-size: 24px; /* Adjust header size for mobile */
+        font-size: 1.2em;
       }
-
-      p {
-        font-size: 14px; /* Adjust paragraph size for mobile */
+      .card-option {
+        width: 45%;
+        margin: 5px;
+      }
+      .buy-now-btn {
+        font-size: 12px;
       }
     }
 
-    @media screen and (max-width: 480px) {
+    @media (max-width: 480px) {
       h1 {
-        font-size: 20px;
+        font-size: 1em;
       }
-
       p {
+        font-size: 12px;
+      }
+      .card-option img {
+        max-height: 200px;
+      }
+      .buy-now-btn {
+        padding: 8px 15px;
         font-size: 12px;
       }
     }
@@ -162,54 +162,32 @@
 </head>
 <body>
   <h1>Spread the Love this Valentine’s Day with a Kitten E-Card!</h1>
-
   <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
 
-  <!-- E-Card Style Display -->
-  <div class="images-container">
+  <div class="card-options-container">
+    <!-- E-Card Option 1 -->
     <div class="card-option">
-      <img src="kitten1.jpg" alt="Kitten Style 1" class="clickable-img">
-      <p>Style 1</p>
+      <img src="kitten1.jpg" alt="Kitten Style 1" id="img1" class="clickable-img">
+      <a href="your-payment-link-1" class="buy-now-btn">Style 1</a>
     </div>
+
+    <!-- E-Card Option 2 -->
     <div class="card-option">
-      <img src="kitten2.jpg" alt="Kitten Style 2" class="clickable-img">
-      <p>Style 2</p>
+      <img src="kitten2.jpg" alt="Kitten Style 2" id="img2" class="clickable-img">
+      <a href="your-payment-link-2" class="buy-now-btn">Style 2</a>
     </div>
+
+    <!-- E-Card Option 3 -->
     <div class="card-option">
-      <img src="kitten3.jpg" alt="Kitten Style 3" class="clickable-img">
-      <p>Style 3</p>
+      <img src="kitten3.jpg" alt="Kitten Style 3" id="img3" class="clickable-img">
+      <a href="your-payment-link-3" class="buy-now-btn">Style 3</a>
     </div>
+
+    <!-- E-Card Option 4 -->
     <div class="card-option">
-      <img src="kitten4.jpg" alt="Kitten Style 4" class="clickable-img">
-      <p>Style 4</p>
+      <img src="kitten4.jpg" alt="Kitten Style 4" id="img4" class="clickable-img">
+      <a href="your-payment-link-4" class="buy-now-btn">Style 4</a>
     </div>
-  </div>
-
-  <!-- E-Card Selection Form -->
-  <div class="form-container">
-    <h2>Choose Your E-Card Style</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <!-- PayPal details -->
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="hosted_button_id" value="BB2VNTGL2AR4N"> <!-- Alley Cat Project PayPal Button ID -->
-
-      <!-- Collect email and style selection -->
-      <label for="email">Your Email Address:</label>
-      <input type="email" id="email" name="email" required placeholder="Enter your email" />
-
-      <label for="style">Choose Style:</label>
-      <select name="style" id="style" required>
-        <option value="Style 1">Style 1</option>
-        <option value="Style 2">Style 2</option>
-        <option value="Style 3">Style 3</option>
-        <option value="Style 4">Style 4</option>
-      </select>
-
-      <!-- Hidden input to pass selected style and email to PayPal -->
-      <input type="hidden" id="custom" name="custom" value="">
-
-      <button type="submit">Donate and Get E-Card</button>
-    </form>
   </div>
 
   <!-- Modal for enlarging images -->
@@ -239,14 +217,7 @@
     closeBtn.onclick = function() {
       modal.style.display = "none";
     }
-
-    // Set the custom field to include the selected style and email before submitting the form
-    document.querySelector('form').addEventListener('submit', function(e) {
-      var email = document.getElementById('email').value;
-      var style = document.getElementById('style').value;
-      var customField = document.getElementById('custom');
-      customField.value = `Email: ${email}, Style: ${style}`;
-    });
   </script>
+
 </body>
 </html>
