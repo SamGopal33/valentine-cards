@@ -6,244 +6,198 @@
   <title>Valentine Kitten E-Cards</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Quicksand&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Quicksand', sans-serif;
       text-align: center;
       background-color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      padding: 0 10px;
+      padding: 20px;
     }
-
     h1 {
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
       color: #dc7878;
-      font-size: 1.5em;
-      margin: 20px 0;
+      margin-bottom: 20px;
     }
-
     p {
       color: black;
-      font-size: 14px;
-      margin: 0 10px 20px;
-      line-height: 1.5;
-      max-width: 90%;
-    }
-
-    /* Form styles */
-    .form-container {
-      margin-top: 20px;
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-container input,
-    .form-container select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
       font-size: 16px;
+      margin: 20px;
+      line-height: 1.6;
     }
-
-    .form-container button {
-      width: 100%;
-      padding: 12px;
-      background-color: #dc7878;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .form-container button:hover {
-      background-color: #e68a8a;
-    }
-
-    .card-options-container {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      flex-wrap: wrap;
-      padding-bottom: 30px;
-      margin-top: 20px;
-    }
-
     .card-option {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 10px;
-      width: 40%;
+      display: inline-block;
+      margin: 20px;
+      width: 200px; /* Set width for uniformity */
+      position: relative;
+      cursor: pointer;
     }
-
     .card-option img {
       width: 100%;
       height: 200px; /* Fixed height for uniformity */
-      object-fit: cover; /* Preserve aspect ratio */
       border-radius: 10px;
+      object-fit: cover;
       transition: transform 0.3s ease;
-      cursor: pointer; /* Make images clickable */
     }
-
     .card-option img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
-    /* Enlarged image styles for lightbox */
-    .lightbox {
+    /* Form styling */
+    .form-container {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+    }
+    input[type="email"], select {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .buy-now-btn {
+      background-color: #dc7878;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #e68a8a;
+    }
+
+    /* Modal styles */
+    .modal {
       display: none;
       position: fixed;
-      top: 0;
+      z-index: 1;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+      padding-top: 60px;
     }
 
-    .lightbox img {
-      max-width: 90%;
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
       max-height: 80%;
       object-fit: contain;
     }
 
-    /* Ensuring no scrolling */
-    html, body {
-      height: 100%;
-      margin: 0;
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 1.2em;
-      }
+    .close:hover,
+    .close:focus {
+      color: #dc7878;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-      .form-container {
-        max-width: 80%;
-        padding: 15px;
-      }
-
+    /* Responsiveness */
+    @media screen and (max-width: 768px) {
       .card-option {
-        width: 45%; /* Two images per row on smaller screens */
+        width: 45%;
       }
-
-      p {
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.1em;
-      }
-
       .form-container {
-        max-width: 90%;
-        padding: 10px;
-      }
-
-      .card-option {
-        width: 90%; /* One image per row on extra small screens */
-      }
-
-      p {
-        font-size: 12px;
+        width: 80%;
       }
     }
 
+    @media screen and (max-width: 480px) {
+      .card-option {
+        width: 80%;
+      }
+      input[type="email"], select {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-
   <h1>Spread the Love this Valentine’s Day with a Kitten E-Card!</h1>
 
   <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
 
-  <!-- Form to select style and enter email -->
+  <!-- E-Card Options -->
+  <div class="card-options-container">
+    <div class="card-option" onclick="openModal('kitten1.jpg')">
+      <img src="kitten1.jpg" alt="Kitten Style 1">
+    </div>
+    <div class="card-option" onclick="openModal('kitten2.jpg')">
+      <img src="kitten2.jpg" alt="Kitten Style 2">
+    </div>
+    <div class="card-option" onclick="openModal('kitten3.jpg')">
+      <img src="kitten3.jpg" alt="Kitten Style 3">
+    </div>
+    <div class="card-option" onclick="openModal('kitten4.jpg')">
+      <img src="kitten4.jpg" alt="Kitten Style 4">
+    </div>
+  </div>
+
+  <!-- Modal for enlarging images -->
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <!-- Donation Form -->
   <div class="form-container">
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input name="cmd" type="hidden" value="_s-xclick">
-      <input name="custom" type="hidden" value="web_site">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="custom" value="web_site">
+      <input type="hidden" name="hosted_button_id" value="BB2VNTGL2AR4N">
+      
+      <!-- Email input -->
+      <label for="email">Your Email</label><br>
+      <input type="email" name="email" id="email" required><br>
 
-      <!-- Collect email address -->
-      <input type="email" name="email" placeholder="Enter your email address" required>
-
-      <!-- Dropdown to choose style -->
-      <select name="style" required>
-        <option value="">Choose your style</option>
+      <!-- Style selection -->
+      <label for="style">Choose your Style</label><br>
+      <select name="style" id="style" required>
         <option value="Style 1">Style 1</option>
         <option value="Style 2">Style 2</option>
         <option value="Style 3">Style 3</option>
         <option value="Style 4">Style 4</option>
-      </select>
+      </select><br>
 
-      <!-- PayPal hosted button ID for donations -->
-      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-
-      <!-- Donate Button -->
-      <button type="submit">Donate and Get Your E-Card</button>
+      <!-- PayPal button -->
+      <button type="submit" class="buy-now-btn">Donate & Get Your E-Card</button>
     </form>
   </div>
 
-  <!-- E-Card Options -->
-  <div class="card-options-container">
-    <div class="card-option">
-      <img src="kitten1.jpg" alt="Kitten Style 1" onclick="openLightbox(this)">
-    </div>
-
-    <div class="card-option">
-      <img src="kitten2.jpg" alt="Kitten Style 2" onclick="openLightbox(this)">
-    </div>
-
-    <div class="card-option">
-      <img src="kitten3.jpg" alt="Kitten Style 3" onclick="openLightbox(this)">
-    </div>
-
-    <div class="card-option">
-      <img src="kitten4.jpg" alt="Kitten Style 4" onclick="openLightbox(this)">
-    </div>
-  </div>
-
-  <!-- Lightbox for enlarged images -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-image" src="" alt="Enlarged image">
-  </div>
-
   <script>
-    // Open the lightbox with the clicked image
-    function openLightbox(image) {
-      var lightbox = document.getElementById("lightbox");
-      var lightboxImage = document.getElementById("lightbox-image");
-      lightbox.style.display = "flex"; // Show lightbox
-      lightboxImage.src = image.src; // Set the clicked image as the lightbox image
+    // Open the modal with the selected image
+    function openModal(imageSrc) {
+      var modal = document.getElementById("modal");
+      var modalImg = document.getElementById("modalImg");
+      modal.style.display = "block";
+      modalImg.src = imageSrc;
     }
 
-    // Close the lightbox when clicked
-    function closeLightbox() {
-      var lightbox = document.getElementById("lightbox");
-      lightbox.style.display = "none"; // Hide lightbox
+    // Close the modal
+    function closeModal() {
+      var modal = document.getElementById("modal");
+      modal.style.display = "none";
     }
   </script>
 
