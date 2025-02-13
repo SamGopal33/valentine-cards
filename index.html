@@ -1,106 +1,173 @@
-<style>
-  /* General page setup */
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Quicksand', sans-serif;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Kitten E-Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and set base styles */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+    }
 
-  .container {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-  }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      padding: 20px;
+    }
 
-  /* Carousel container */
-  .carousel {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 350px; /* Fixed height for the carousel */
-  }
+    /* Carousel container */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 350px; /* Fixed height for the carousel */
+    }
 
-  .carousel-images {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
 
-  .carousel-images img {
-    width: 100%;   /* Set the width of the image to fill the container */
-    height: auto;  /* Auto height to maintain aspect ratio */
-    flex-shrink: 0;
-  }
-
-  /* Buttons for navigating the carousel */
-  .carousel-btns {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-  }
-
-  .carousel-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 30px;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-
-  .carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  /* Form and button styles */
-  input, select {
-    width: 250px;
-    height: 40px;
-    font-size: 16px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-  }
-
-  .buy-now-btn {
-    display: inline-block;
-    background-color: #dc7878;
-    color: white;
-    padding: 12px 30px;
-    font-size: 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: none;
-  }
-
-  .buy-now-btn:hover {
-    background-color: #e68a8a;
-  }
-
-  /* Mobile responsiveness */
-  @media (max-width: 768px) {
     .carousel-images img {
-      width: 100%;  /* Maintain the width at 100% of the container */
-      height: auto; /* Auto-adjust the height to maintain aspect ratio */
+      width: 100%;   /* Set the width of the image to fill the container */
+      height: auto;  /* Auto height to maintain aspect ratio */
+      flex-shrink: 0;
     }
 
-    .buy-now-btn, input, select {
-      width: 100%; /* Make inputs and button fit screen */
+    /* Buttons for navigating the carousel */
+    .carousel-btns {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
     }
-  }
 
-</style>
+    .carousel-btn {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 30px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Form and button styles */
+    input, select {
+      width: 100%;
+      height: 40px;
+      font-size: 16px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    .buy-now-btn {
+      display: inline-block;
+      background-color: #dc7878;
+      color: white;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #e68a8a;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .carousel-images img {
+        width: 100%;  /* Maintain the width at 100% of the container */
+        height: auto; /* Auto-adjust the height to maintain aspect ratio */
+      }
+
+      .buy-now-btn, input, select {
+        width: 100%; /* Make inputs and button fit screen */
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="carousel-images">
+        <img src="kitten1.jpg" alt="Kitten Style 1">
+        <img src="kitten2.jpg" alt="Kitten Style 2">
+        <img src="kitten3.jpg" alt="Kitten Style 3">
+        <img src="kitten4.jpg" alt="Kitten Style 4">
+      </div>
+      <div class="carousel-btns">
+        <button class="carousel-btn" onclick="prevImage()">&#10094;</button>
+        <button class="carousel-btn" onclick="nextImage()">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Donate Form -->
+    <div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input name="cmd" type="hidden" value="_s-xclick">
+        <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+        <input name="custom" type="hidden" value="web_site">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <select name="style" required>
+          <option value="style1">Style 1</option>
+          <option value="style2">Style 2</option>
+          <option value="style3">Style 3</option>
+          <option value="style4">Style 4</option>
+        </select>
+        <input type="submit" value="Donate and Get Your E-Card" class="buy-now-btn">
+      </form>
+    </div>
+  </div>
+
+  <script>
+    var currentIndex = 0;
+    var images = document.querySelectorAll('.carousel-images img');
+    
+    // Function to move to the previous image
+    function prevImage() {
+      currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+      updateCarousel();
+    }
+    
+    // Function to move to the next image
+    function nextImage() {
+      currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+      updateCarousel();
+    }
+    
+    // Update the carousel images by changing the transform property
+    function updateCarousel() {
+      var offset = -currentIndex * 100; // Move the carousel based on the current index
+      document.querySelector('.carousel-images').style.transform = 'translateX(' + offset + '%)';
+    }
+  </script>
+
+</body>
+</html>
