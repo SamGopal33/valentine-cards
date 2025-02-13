@@ -15,20 +15,22 @@
       background-color: #f0f0f0;
       padding: 20px;
       height: 100vh;
+      flex-direction: column;
     }
 
     /* Main container to hold both sections */
     .container {
       display: flex;
-      width: 80vw;
+      width: 100%;
       max-width: 900px;
       justify-content: space-between;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     /* Image Section */
     .image-section, .form-section {
-      width: 50%;
+      width: 48%; /* Adjust to 48% for responsiveness */
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -43,8 +45,9 @@
     }
 
     .thumbnail {
-      width: 100px;
-      height: 100px;
+      width: 100%; /* Images take up full width of their container */
+      height: auto;
+      max-width: 100px;
       object-fit: cover;
       cursor: pointer;
       transition: transform 0.3s;
@@ -108,6 +111,18 @@
 
     .submit-btn:hover {
       background-color: #e68a8a;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      .image-section, .form-section {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .thumbnail {
+        max-width: 80px; /* Make thumbnails smaller on smaller screens */
+      }
     }
   </style>
 </head>
