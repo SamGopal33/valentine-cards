@@ -25,10 +25,12 @@
       gap: 20px;
     }
 
+    /* Image Section and Form Section as square containers */
     .image-section, .form-section {
       width: 48%;
+      padding-top: 48%; /* Makes the container square */
+      position: relative;
       background: white;
-      padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -38,6 +40,11 @@
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 10px;
       justify-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
     .thumbnail {
@@ -66,13 +73,10 @@
     .thumbnail-wrapper {
       position: relative;
       width: 100%;
-      padding-top: 100%; /* Aspect ratio 1:1 */
+      height: 100%;
     }
 
     .thumbnail-wrapper img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -98,6 +102,14 @@
 
     .form-container {
       text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     input[type="email"], select, button {
@@ -192,3 +204,4 @@
 
 </body>
 </html>
+
