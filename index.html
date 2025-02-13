@@ -7,46 +7,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Quicksand', sans-serif;
       display: flex;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
       margin: 0;
       background-color: #f0f0f0;
       padding: 20px;
-      height: 100vh;
-      align-items: center;
     }
 
     .container {
       display: flex;
       justify-content: space-between;
-      width: 100%;
-      max-width: 1000px;
+      width: 90%;
+      max-width: 900px;
       gap: 20px;
     }
 
     /* Square Containers */
     .image-section, .form-section {
-      width: 48%;
-      padding-top: 48%; /* Makes the container square */
+      width: 50%;
+      aspect-ratio: 1 / 1; /* Ensures the container remains square */
       position: relative;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden; /* Prevents content overflow */
+      overflow: hidden;
     }
 
-    /* Image thumbnails should resize and fill the square container */
+    /* Image thumbnails container */
     .thumbnail-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
-      justify-items: center;
-      position: absolute;
-      top: 0;
-      left: 0;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 5px;
       width: 100%;
       height: 100%;
+      padding: 10px;
     }
 
     .thumbnail-wrapper {
@@ -60,65 +58,43 @@
     .thumbnail-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ensures images fill the square while maintaining aspect ratio */
-      border-radius: 10px;
+      object-fit: cover; /* Ensures images fill the squares properly */
+      border-radius: 5px;
     }
 
-    .subtitle {
-      font-family: 'Quicksand', sans-serif;
-      color: #dc7878;
-      font-size: 3vw; /* Relative font size based on viewport width */
-      font-weight: 600;
-      text-align: center;
-      margin-top: 5px;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal img {
-      max-width: 90%;
-      max-height: 90%;
-    }
-
+    /* Form Section */
     .form-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 10%;
     }
 
-    input[type="email"], select, button {
-      padding: 12px;
-      margin: 5px;
-      font-size: 3vw; /* Relative font size based on viewport width */
+    form {
       width: 100%;
-      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input, select, button {
+      width: 80%;
+      padding: 10px;
+      font-size: 1.2vw;
       border-radius: 5px;
+      border: 1px solid #ccc;
       font-family: 'Quicksand', sans-serif;
+      text-align: center;
     }
 
     .submit-btn {
       background-color: #dc7878;
       color: white;
       cursor: pointer;
-      text-align: center;
       border: none;
-      font-size: 3vw; /* Relative font size based on viewport width */
       font-weight: 600;
     }
 
@@ -126,6 +102,12 @@
       background-color: #e68a8a;
     }
 
+    /* Responsive Text Scaling */
+    @media (max-width: 600px) {
+      input, select, button {
+        font-size: 3vw;
+      }
+    }
   </style>
 </head>
 <body>
@@ -135,27 +117,20 @@
     <div class="image-section">
       <div class="thumbnail-container">
         <div class="thumbnail-wrapper">
-          <img src="kitten1.jpg" alt="Kitten 1" class="thumbnail" onclick="openModal('kitten1.jpg')">
+          <img src="kitten1.jpg" alt="Kitten 1">
         </div>
-        <div class="subtitle">Style 1</div>
-
         <div class="thumbnail-wrapper">
-          <img src="kitten2.jpg" alt="Kitten 2" class="thumbnail" onclick="openModal('kitten2.jpg')">
+          <img src="kitten2.jpg" alt="Kitten 2">
         </div>
-        <div class="subtitle">Style 2</div>
-
         <div class="thumbnail-wrapper">
-          <img src="kitten3.jpg" alt="Kitten 3" class="thumbnail" onclick="openModal('kitten3.jpg')">
+          <img src="kitten3.jpg" alt="Kitten 3">
         </div>
-        <div class="subtitle">Style 3</div>
-
         <div class="thumbnail-wrapper">
-          <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')">
+          <img src="kitten4.jpg" alt="Kitten 4">
         </div>
-        <div class="subtitle">Style 4</div>
       </div>
     </div>
-  
+
     <!-- Donate Form Section -->
     <div class="form-section">
       <div class="form-container">
@@ -165,7 +140,7 @@
           <input name="custom" type="hidden" value="web_site">
           
           <input type="email" name="email" placeholder="Enter your email" required>
-          <select name="style" id="styleSelect" required>
+          <select name="style" required>
             <option value="style1">Style 1</option>
             <option value="style2">Style 2</option>
             <option value="style3">Style 3</option>
@@ -176,21 +151,6 @@
       </div>
     </div>
   </div>
-
-  <div class="modal" id="imageModal" onclick="closeModal()">
-    <img id="modalImage" src="" alt="Expanded Image">
-  </div>
-
-  <script>
-    function openModal(imageSrc) {
-      document.getElementById("modalImage").src = imageSrc;
-      document.getElementById("imageModal").style.display = "flex";
-    }
-
-    function closeModal() {
-      document.getElementById("imageModal").style.display = "none";
-    }
-  </script>
 
 </body>
 </html>
