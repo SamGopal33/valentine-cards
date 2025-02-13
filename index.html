@@ -44,13 +44,19 @@
       gap: 10px;
     }
 
+    .thumbnail-wrapper {
+      width: 100%; /* Full width */
+      height: 200px; /* You can adjust this to match your landscape image height */
+      overflow: hidden; /* Prevent images from overflowing the container */
+      position: relative;
+    }
+
     .thumbnail {
-      width: 100%; /* Images take up full width of their container */
-      height: auto;
-      max-width: 100px;
-      object-fit: cover;
-      cursor: pointer;
+      width: 100%; /* Make image width 100% of the container */
+      height: 100%; /* Match the height of the wrapper */
+      object-fit: cover; /* Ensure images maintain aspect ratio and fill the container */
       transition: transform 0.3s;
+      cursor: pointer;
     }
 
     .thumbnail:hover {
@@ -120,8 +126,12 @@
         margin-bottom: 20px;
       }
 
+      .thumbnail-wrapper {
+        height: 150px; /* Adjust image height for smaller screens */
+      }
+
       .thumbnail {
-        max-width: 80px; /* Make thumbnails smaller on smaller screens */
+        object-fit: cover;
       }
     }
   </style>
@@ -132,22 +142,22 @@
     <!-- Image Section -->
     <div class="image-section">
       <div class="thumbnail-container">
-        <div>
+        <div class="thumbnail-wrapper">
           <img src="kitten1.jpg" alt="Kitten 1" class="thumbnail" onclick="openModal('kitten1.jpg')">
-          <div class="subtitle">Style 1</div>
         </div>
-        <div>
+        <div class="subtitle">Style 1</div>
+        <div class="thumbnail-wrapper">
           <img src="kitten2.jpg" alt="Kitten 2" class="thumbnail" onclick="openModal('kitten2.jpg')">
-          <div class="subtitle">Style 2</div>
         </div>
-        <div>
+        <div class="subtitle">Style 2</div>
+        <div class="thumbnail-wrapper">
           <img src="kitten3.jpg" alt="Kitten 3" class="thumbnail" onclick="openModal('kitten3.jpg')">
-          <div class="subtitle">Style 3</div>
         </div>
-        <div>
+        <div class="subtitle">Style 3</div>
+        <div class="thumbnail-wrapper">
           <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')">
-          <div class="subtitle">Style 4</div>
         </div>
+        <div class="subtitle">Style 4</div>
       </div>
     </div>
   
