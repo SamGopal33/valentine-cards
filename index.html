@@ -3,150 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine Kitten E-Cards</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Quicksand&display=swap" rel="stylesheet">
+  <title>Simple Image Test</title>
   <style>
-    /* Reset and set base styles */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-color: white;
+    body {
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-sizing: border-box;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
       flex-direction: column;
     }
-
-    .container {
-      width: 100%;
+    
+    .carousel-images img {
+      width: 80%;
+      height: auto;
       max-width: 600px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Carousel container */
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: 350px; /* Fixed height for the carousel */
       margin-bottom: 20px;
     }
 
-    .carousel-images {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .carousel-images img {
-      width: 100%;   /* Set the width of the image to fill the container */
-      height: auto;  /* Auto height to maintain aspect ratio */
-      flex-shrink: 0;
-    }
-
-    /* Buttons for navigating the carousel */
     .carousel-btns {
-      position: absolute;
-      top: 50%;
-      width: 100%;
       display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
+      justify-content: center;
     }
 
     .carousel-btn {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 0 10px;
       border: none;
-      font-size: 30px;
-      padding: 10px;
       cursor: pointer;
-      border-radius: 50%;
     }
-
-    .carousel-btn:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    /* Form and button styles */
-    input, select {
-      width: 100%;
-      height: 40px;
-      font-size: 16px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-bottom: 20px;
-      box-sizing: border-box;
-    }
-
-    .buy-now-btn {
-      display: inline-block;
-      background-color: #dc7878;
-      color: white;
-      padding: 12px 30px;
-      font-size: 16px;
-      border-radius: 5px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      border: none;
-      width: 100%;
-    }
-
-    .buy-now-btn:hover {
-      background-color: #e68a8a;
-    }
-
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-      .carousel-images img {
-        width: 100%;  /* Maintain the width at 100% of the container */
-        height: auto; /* Auto-adjust the height to maintain aspect ratio */
-      }
-
-      .buy-now-btn, input, select {
-        width: 100%; /* Make inputs and button fit screen */
-      }
-    }
-
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Carousel -->
-    <div class="carousel">
-      <div class="carousel-images">
-        <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+1" alt="Kitten Style 1">
-        <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+2" alt="Kitten Style 2">
-        <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+3" alt="Kitten Style 3">
-        <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+4" alt="Kitten Style 4">
-      </div>
-      <div class="carousel-btns">
-        <button class="carousel-btn" onclick="prevImage()">&#10094;</button>
-        <button class="carousel-btn" onclick="nextImage()">&#10095;</button>
-      </div>
-    </div>
-
-    <!-- Donate Form -->
-    <div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input name="cmd" type="hidden" value="_s-xclick">
-        <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-        <input name="custom" type="hidden" value="web_site">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <select name="style" required>
-          <option value="style1">Style 1</option>
-          <option value="style2">Style 2</option>
-          <option value="style3">Style 3</option>
-          <option value="style4">Style 4</option>
-        </select>
-        <input type="submit" value="Donate and Get Your E-Card" class="buy-now-btn">
-      </form>
-    </div>
+  <div class="carousel-images">
+    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+1" alt="Kitten Style 1">
+    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+2" alt="Kitten Style 2">
+    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+3" alt="Kitten Style 3">
+    <img src="https://via.placeholder.com/600x350/FF69B4/000000?text=Kitten+Style+4" alt="Kitten Style 4">
+  </div>
+  
+  <div class="carousel-btns">
+    <button class="carousel-btn" onclick="prevImage()">Previous</button>
+    <button class="carousel-btn" onclick="nextImage()">Next</button>
   </div>
 
   <script>
@@ -171,6 +73,5 @@
       document.querySelector('.carousel-images').style.transform = 'translateX(' + offset + '%)';
     }
   </script>
-
 </body>
 </html>
