@@ -35,7 +35,7 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      max-width: 1200px;
+      max-width: 600px;
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 30px;
@@ -44,7 +44,7 @@
 
     .carousel-images {
       display: flex;
-      transition: transform 0.3s ease;
+      transition: transform 0.5s ease;
       width: 100%;
       overflow: hidden;
     }
@@ -54,7 +54,7 @@
       height: auto;
       object-fit: contain;
       flex-shrink: 0;
-      max-width: 300px;  /* Set the max width to ensure the images are not too large */
+      max-width: 600px;  /* Set the max width to ensure the images are not too large */
     }
 
     .carousel-btns {
@@ -178,16 +178,16 @@
   <script>
     // Carousel functionality
     let currentIndex = 0;
+    const totalImages = document.querySelectorAll('.carousel-images img').length;
 
     function moveCarousel(direction) {
       const images = document.querySelector('.carousel-images');
-      const totalImages = images.children.length;
       currentIndex += direction;
 
       if (currentIndex < 0) currentIndex = totalImages - 1;
       if (currentIndex >= totalImages) currentIndex = 0;
 
-      const offset = -currentIndex * 100;
+      const offset = -currentIndex * 100; // Move the carousel to the correct position
       images.style.transform = `translateX(${offset}%)`;
     }
   </script>
