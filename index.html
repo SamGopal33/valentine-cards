@@ -28,12 +28,17 @@
     }
 
     /* Image container */
+    .carousel {
+      position: relative;
+      width: 100%;
+    }
+
     .carousel img {
       width: 100%;
       max-height: 350px;
       object-fit: contain;
       display: none;
-      position: relative; /* Ensures child elements position relative to this */
+      position: relative; /* Ensures elements inside are relative to this */
     }
 
     .carousel img.active {
@@ -62,8 +67,8 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds contrast for visibility */
     }
 
-    /* Ensure the arrow stays inside the image container */
-    .carousel-container {
+    /* Ensure the arrow is relative to each image */
+    .carousel img.active {
       position: relative;
     }
 
@@ -85,79 +90,4 @@
     input[type="email"], select, button {
       padding: 12px;
       margin: 5px;
-      font-size: 16px;
-      width: 100%;
-      box-sizing: border-box;
-      border-radius: 5px;
-    }
-
-    .submit-btn {
-      background-color: #dc7878;
-      color: white;
-      cursor: pointer;
-      text-align: center;
-      border: none;
-    }
-
-    .submit-btn:hover {
-      background-color: #e68a8a;
-    }
-
-  </style>
-</head>
-<body>
-
-  <!-- Carousel -->
-  <div class="carousel-container">
-    <div class="carousel">
-      <img src="kitten1.jpg" alt="Kitten 1" class="active">
-      <img src="kitten2.jpg" alt="Kitten 2">
-      <img src="kitten3.jpg" alt="Kitten 3">
-      <img src="kitten4.jpg" alt="Kitten 4">
-    </div>
-    <button class="next-arrow" onclick="nextImage()">&#10095;</button>
-  </div>
-
-  <div class="carousel-caption" id="caption">Style 1</div>
-
-  <!-- Donate Form -->
-  <div class="form-container">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input name="cmd" type="hidden" value="_s-xclick">
-      <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
-      <input name="custom" type="hidden" value="web_site">
-      
-      <input type="email" name="email" placeholder="Enter your email" required>
-      <select name="style" id="styleSelect" required>
-        <option value="style1">Style 1</option>
-        <option value="style2">Style 2</option>
-        <option value="style3">Style 3</option>
-        <option value="style4">Style 4</option>
-      </select>
-      <button type="submit" class="submit-btn">Donate and Get Your E-Card</button>
-    </form>
-  </div>
-
-  <script>
-    const images = document.querySelectorAll(".carousel img");
-    const captions = ["Style 1", "Style 2", "Style 3", "Style 4"];
-    let currentIndex = 0;
-
-    function updateCarousel() {
-      images.forEach((img, index) => {
-        img.classList.toggle("active", index === currentIndex);
-      });
-      document.getElementById("caption").innerText = captions[currentIndex];
-      document.getElementById("styleSelect").value = `style${currentIndex + 1}`;
-    }
-
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateCarousel();
-    }
-
-    updateCarousel();
-  </script>
-
-</body>
-</html>
+     
