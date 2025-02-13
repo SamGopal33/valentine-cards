@@ -1,67 +1,225 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Quicksand', sans-serif;
-  background-color: white;
-  overflow: hidden;
-  width: 100%; /* Added width: 100% */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Kitten E-Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    /* Ensure the page fills the screen and no scrolling */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: white;
+      overflow: hidden; /* Prevent scrolling */
+      width: 100%; /* Ensure the full width is taken up */
+    }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh; /* Full height of viewport */
-  text-align: center;
-  width: 100%; /* Ensure container takes up full width */
-}
+    /* Centering content in the screen */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      width: 100%; /* Ensure the container takes full width */
+    }
 
-.card-options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-}
+    /* Heading and description styles */
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      color: #dc7878;
+    }
 
-.card-option {
-  position: relative;
-  width: 230px; /* Adjusted size for better fit */
-  height: 230px;
-  background-color: white;
-  text-align: center;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  margin: 10px;
-}
+    p {
+      color: black;
+      font-size: 16px;
+      margin: 20px;
+      line-height: 1.6;
+      max-width: 80%;
+      margin-bottom: 20px;
+    }
 
-.card-option img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures images maintain aspect ratio */
-  transition: transform 0.3s ease;
-}
+    /* Card options and images */
+    .card-options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
 
-.card-option:hover img {
-  transform: scale(1.1);
-}
+    .card-option {
+      position: relative;
+      width: 230px; /* Adjusted size for better fit */
+      height: 230px;
+      background-color: white;
+      text-align: center;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin: 10px;
+    }
 
-.buy-now-btn {
-  display: inline-block;
-  background-color: #dc7878;
-  color: white;
-  padding: 12px 30px;
-  font-size: 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-}
+    .card-option img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures images maintain aspect ratio */
+      transition: transform 0.3s ease;
+    }
+
+    .card-option:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-option .subtitle {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Donate button styles */
+    .buy-now-btn {
+      display: inline-block;
+      background-color: #dc7878;
+      color: white;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #e68a8a;
+    }
+
+    /* Modal for enlarging images */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #dc7878;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Spread the Love this Valentine’s Day with a Kitten E-Card!</h1>
+    <p>This Valentine's Day, show someone special that you care with an adorable kitten e-card. Each card features a cute, heartwarming image of a kitten, perfect for spreading joy and love. You can donate any amount to receive your chosen e-card. Your generosity helps us continue to support and care for kittens in need, so every donation makes a difference! Once your donation is received, you'll receive a download link for your selected e-card. Share the love and make someone's day with a sweet gesture this Valentine's Day!</p>
+
+    <!-- E-Card Options -->
+    <div class="card-options">
+      <div class="card-option">
+        <img src="kitten1.jpg" alt="Kitten Style 1" class="clickable-img">
+        <div class="subtitle">Style 1</div>
+      </div>
+      <div class="card-option">
+        <img src="kitten2.jpg" alt="Kitten Style 2" class="clickable-img">
+        <div class="subtitle">Style 2</div>
+      </div>
+      <div class="card-option">
+        <img src="kitten3.jpg" alt="Kitten Style 3" class="clickable-img">
+        <div class="subtitle">Style 3</div>
+      </div>
+      <div class="card-option">
+        <img src="kitten4.jpg" alt="Kitten Style 4" class="clickable-img">
+        <div class="subtitle">Style 4</div>
+      </div>
+    </div>
+
+    <!-- Donate Form -->
+    <div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input name="cmd" type="hidden" value="_s-xclick">
+        <input name="hosted_button_id" type="hidden" value="BB2VNTGL2AR4N">
+        <input name="custom" type="hidden" value="web_site">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <select name="style" required>
+          <option value="style1">Style 1</option>
+          <option value="style2">Style 2</option>
+          <option value="style3">Style 3</option>
+          <option value="style4">Style 4</option>
+        </select>
+        <input type="submit" value="Donate" class="buy-now-btn">
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for Enlarged Image -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("modal");
+    var modalImg = document.getElementById("modalImg");
+    var images = document.querySelectorAll('.clickable-img');
+    
+    // Loop through all images and set up the click event
+    images.forEach(function(img) {
+      img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+      }
+    });
+
+    // Get the close button
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the close button, close the modal
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
