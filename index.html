@@ -41,9 +41,10 @@
       position: relative;
       cursor: pointer;
       transition: transform 0.3s ease;
+      text-align: center;
     }
 
-    /* Image styling with hover effect to enlarge */
+    /* Image styling */
     .card-option img {
       width: 100%;
       height: 200px;
@@ -52,18 +53,14 @@
       transition: transform 0.3s ease;
     }
 
-    /* Enlarge on hover */
-    .card-option:hover img {
-      transform: scale(1.1);
+    /* Enlarging the image on click */
+    .card-option.enlarged img {
+      transform: scale(1.3);
     }
 
-    /* Hover effect: Change cursor to pointer */
-    .card-option:hover {
-      cursor: pointer;
-    }
-
-    /* Subtitle for style names */
+    /* Subtitle styling */
     .card-option .style-name {
+      font-size: 12px;
       position: absolute;
       bottom: 10px;
       left: 0;
@@ -72,7 +69,6 @@
       background-color: rgba(0, 0, 0, 0.6);
       color: white;
       padding: 5px;
-      font-size: 16px;
       border-radius: 0 0 10px 10px;
     }
 
@@ -196,4 +192,43 @@
 
   <!-- Donation Form -->
   <div class="form-container">
-    <form action="https://
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="custom" value="web_site">
+      <input type="hidden" name="hosted_button_id" value="BB2VNTGL2AR4N">
+      
+      <!-- Email input -->
+      <label for="email">Your Email</label><br>
+      <input type="email" name="email" id="email" required><br>
+
+      <!-- Style selection -->
+      <label for="style">Choose your Style</label><br>
+      <select name="style" id="style" required>
+        <option value="Style 1">Style 1</option>
+        <option value="Style 2">Style 2</option>
+        <option value="Style 3">Style 3</option>
+        <option value="Style 4">Style 4</option>
+      </select><br>
+
+      <!-- PayPal button -->
+      <button type="submit" class="buy-now-btn">Donate & Get Your E-Card</button>
+    </form>
+  </div>
+
+  <script>
+    // Function to activate the overlay on click
+    function selectCard(cardElement, style) {
+      // Set the style in the dropdown
+      document.getElementById("style").value = style;
+
+      // Toggle 'enlarged' class to enlarge the image on click
+      var allCards = document.querySelectorAll('.card-option');
+      allCards.forEach(function(card) {
+        card.classList.remove('enlarged');
+      });
+      cardElement.classList.add('enlarged');
+    }
+  </script>
+
+</body>
+</html>
