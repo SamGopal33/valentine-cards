@@ -26,7 +26,6 @@
     .card-option {
       display: inline-block;
       margin: 20px;
-      border-radius: 10px;
       padding: 10px;
       background-color: white;
       cursor: pointer;
@@ -39,7 +38,65 @@
     .card-option img:hover {
       transform: scale(1.1);
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .modal img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #dc7878;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Custom PayPal button styling */
+    .paypal-button input[type="image"] {
+      background-color: #dc7878;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .paypal-button input[type="image"]:hover {
+      background-color: #e68a8a;
+    }
+
     .paypal-button {
+      display: inline-block;
       margin-top: 10px;
     }
   </style>
@@ -51,7 +108,7 @@
 
   <!-- E-Card Option 1 -->
   <div class="card-option">
-    <img src="kitten1.jpg" alt="Kitten Style 1">
+    <img src="kitten1.jpg" alt="Kitten Style 1" id="img1" class="clickable-img">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
@@ -64,7 +121,7 @@
 
   <!-- E-Card Option 2 -->
   <div class="card-option">
-    <img src="kitten2.jpg" alt="Kitten Style 2">
+    <img src="kitten2.jpg" alt="Kitten Style 2" id="img2" class="clickable-img">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
@@ -77,7 +134,7 @@
 
   <!-- E-Card Option 3 -->
   <div class="card-option">
-    <img src="kitten3.jpg" alt="Kitten Style 3">
+    <img src="kitten3.jpg" alt="Kitten Style 3" id="img3" class="clickable-img">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
@@ -90,7 +147,7 @@
 
   <!-- E-Card Option 4 -->
   <div class="card-option">
-    <img src="kitten4.jpg" alt="Kitten Style 4">
+    <img src="kitten4.jpg" alt="Kitten Style 4" id="img4" class="clickable-img">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
@@ -100,6 +157,35 @@
       <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     </form>
   </div>
+
+  <!-- Modal for enlarging images -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("modal");
+    var modalImg = document.getElementById("modalImg");
+    var images = document.querySelectorAll('.clickable-img');
+    
+    // Loop through all images and set up the click event
+    images.forEach(function(img) {
+      img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+      }
+    });
+
+    // Get the close button
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the close button, close the modal
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
