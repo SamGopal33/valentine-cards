@@ -9,21 +9,20 @@
     body {
       font-family: Arial, sans-serif;
       display: flex;
-      align-items: center;
       justify-content: center;
       margin: 0;
       background-color: #f0f0f0;
       padding: 20px;
       height: 100vh;
-      flex-direction: column;
+      align-items: center;
     }
 
     .container {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
+      gap: 20px;
     }
 
     .image-section, .form-section {
@@ -35,29 +34,29 @@
     }
 
     .thumbnail-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .thumbnail-wrapper {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      justify-items: center;
     }
 
     .thumbnail {
-      width: 100%;
-      height: 100%;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       cursor: pointer;
+      transition: transform 0.3s;
+      border-radius: 10px;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
     }
 
     .subtitle {
       font-family: 'Quicksand', sans-serif;
       color: #dc7878;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       text-align: center;
       margin-top: 5px;
@@ -116,22 +115,22 @@
     <!-- Image Section -->
     <div class="image-section">
       <div class="thumbnail-container">
-        <div class="thumbnail-wrapper">
+        <div>
           <img src="kitten1.jpg" alt="Kitten 1" class="thumbnail" onclick="openModal('kitten1.jpg')">
+          <div class="subtitle">Style 1</div>
         </div>
-        <div class="subtitle">Style 1</div>
-        <div class="thumbnail-wrapper">
+        <div>
           <img src="kitten2.jpg" alt="Kitten 2" class="thumbnail" onclick="openModal('kitten2.jpg')">
+          <div class="subtitle">Style 2</div>
         </div>
-        <div class="subtitle">Style 2</div>
-        <div class="thumbnail-wrapper">
+        <div>
           <img src="kitten3.jpg" alt="Kitten 3" class="thumbnail" onclick="openModal('kitten3.jpg')">
+          <div class="subtitle">Style 3</div>
         </div>
-        <div class="subtitle">Style 3</div>
-        <div class="thumbnail-wrapper">
+        <div>
           <img src="kitten4.jpg" alt="Kitten 4" class="thumbnail" onclick="openModal('kitten4.jpg')">
+          <div class="subtitle">Style 4</div>
         </div>
-        <div class="subtitle">Style 4</div>
       </div>
     </div>
   
