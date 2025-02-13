@@ -23,10 +23,13 @@
       max-width: 900px;
       justify-content: space-between;
       gap: 20px;
+      flex-wrap: nowrap; /* Prevent stacking on smaller screens */
     }
 
-    .image-section {
+    /* Ensures the container is square */
+    .image-section, .form-section {
       width: 50%;
+      aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -47,7 +50,7 @@
       justify-content: center;
     }
 
-    /* All images now have equal height and width, cropping to square aspect ratio */
+    /* Ensure images fill the square container, keeping aspect ratio consistent */
     .thumbnail {
       width: 100%;
       height: 100%;
@@ -87,14 +90,6 @@
       max-height: 90%;
     }
 
-    .form-section {
-      width: 50%;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
     .form-container {
       text-align: center;
     }
@@ -123,19 +118,16 @@
       background-color: #e68a8a;
     }
 
-    /* Make the images responsive */
+    /* Media query to adjust for smaller screens, no stacking */
     @media (max-width: 768px) {
       .container {
-        flex-direction: column;
+        gap: 10px; /* Reduce the gap for small screens */
       }
-      .image-section {
-        width: 100%;
-      }
-      .form-section {
-        width: 100%;
+      .image-section, .form-section {
+        width: 50%; /* Keep the containers side by side */
       }
       .thumbnail-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column for the thumbnails */
       }
     }
   </style>
