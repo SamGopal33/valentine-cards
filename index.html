@@ -26,6 +26,7 @@
       text-align: center;
       padding: 20px; /* Added padding around container */
       box-sizing: border-box;
+      width: 100%;
     }
 
     /* Heading and description styles */
@@ -33,13 +34,14 @@
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
       color: #dc7878;
-      margin-bottom: 10px; /* Reduced space between heading and description */
+      margin-bottom: 10px;
+      font-size: 2.5rem;
     }
 
     p {
       color: black;
-      font-size: 16px;
-      margin: 0 0 30px 0; /* Reduced margin bottom to make it less spaced */
+      font-size: 1rem;
+      margin: 0 0 30px 0;
       line-height: 1.6;
       max-width: 80%;
     }
@@ -53,7 +55,7 @@
       max-width: 1200px;
       flex-wrap: wrap;
       gap: 20px;
-      margin-bottom: 40px; /* Added space below the images */
+      margin-bottom: 40px;
     }
 
     .card-option {
@@ -66,6 +68,7 @@
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.3s ease;
+      flex-shrink: 0;
     }
 
     .card-option img {
@@ -100,7 +103,7 @@
       text-decoration: none;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      margin-top: 30px; /* Added margin to button */
+      margin-top: 30px;
     }
 
     .buy-now-btn:hover {
@@ -144,6 +147,60 @@
       color: #dc7878;
       text-decoration: none;
       cursor: pointer;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 2rem; /* Smaller heading on mobile */
+      }
+
+      p {
+        font-size: 14px;
+        margin: 0 0 20px 0;
+        max-width: 90%; /* Reduced max width for mobile */
+      }
+
+      .card-options {
+        gap: 15px; /* Less gap between images on mobile */
+        margin-bottom: 20px;
+      }
+
+      .card-option {
+        width: 200px;
+        height: 200px; /* Smaller images for mobile */
+      }
+
+      .buy-now-btn {
+        padding: 10px 25px;
+        font-size: 14px;
+      }
+    }
+
+    /* Smaller devices */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .card-option {
+        width: 180px;
+        height: 180px; /* Even smaller images on very small screens */
+      }
+
+      p {
+        font-size: 12px;
+        max-width: 85%;
+      }
+
+      .buy-now-btn {
+        padding: 8px 20px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -208,17 +265,14 @@
       img.onclick = function() {
         modal.style.display = "block";
         modalImg.src = this.src;
-      }
+      };
     });
 
-    // Get the close button
-    var closeBtn = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the close button, close the modal
-    closeBtn.onclick = function() {
+    // Close the modal when clicked on close button
+    var close = document.getElementsByClassName("close")[0];
+    close.onclick = function() {
       modal.style.display = "none";
-    }
+    };
   </script>
-
 </body>
 </html>
