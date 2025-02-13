@@ -29,15 +29,36 @@
       padding: 10px;
       background-color: white;
       text-align: center;
+      width: 300px; /* Set width for uniformity */
+      position: relative;
     }
     .card-option img {
-      max-width: 300px;
+      width: 100%;
+      height: auto;
       border-radius: 10px;
       transition: transform 0.3s ease;
       object-fit: cover;
     }
     .card-option img:hover {
       transform: scale(1.1);
+    }
+
+    .buy-now-btn {
+      display: block;
+      margin-top: 10px;
+      background-color: #dc7878;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #e68a8a;
     }
 
     /* Modal styles */
@@ -62,7 +83,6 @@
       object-fit: contain;
     }
 
-    /* Close button */
     .close {
       position: absolute;
       top: 15px;
@@ -78,24 +98,6 @@
       color: #dc7878;
       text-decoration: none;
       cursor: pointer;
-    }
-
-    /* Custom "Buy Now" button styling */
-    .buy-now-btn {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: #dc7878;
-      color: white;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 16px;
-      text-decoration: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .buy-now-btn:hover {
-      background-color: #e68a8a;
     }
   </style>
 </head>
