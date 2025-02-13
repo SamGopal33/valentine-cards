@@ -29,11 +29,15 @@
       border-radius: 10px;
       padding: 10px;
       background-color: white;
+      cursor: pointer;
     }
     .card-option img {
       max-width: 300px;
       border-radius: 10px;
-      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .card-option img:hover {
+      transform: scale(1.1);
     }
     .paypal-button {
       margin-top: 10px;
@@ -47,53 +51,53 @@
 
   <!-- E-Card Option 1 -->
   <div class="card-option">
-    <img src="kitten1.jpg" alt="Kitten Style 1" onclick="window.open(this.src)">
+    <img src="kitten1.jpg" alt="Kitten Style 1">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
       <input type="hidden" name="item_name" value="Kitten Style 1">
       <input type="hidden" name="amount" value="5.00">
       <input type="hidden" name="currency_code" value="USD">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" value="Style 1">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     </form>
   </div>
 
   <!-- E-Card Option 2 -->
   <div class="card-option">
-    <img src="kitten2.jpg" alt="Kitten Style 2" onclick="window.open(this.src)">
+    <img src="kitten2.jpg" alt="Kitten Style 2">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
       <input type="hidden" name="item_name" value="Kitten Style 2">
       <input type="hidden" name="amount" value="5.00">
       <input type="hidden" name="currency_code" value="USD">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" value="Style 2">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     </form>
   </div>
 
   <!-- E-Card Option 3 -->
   <div class="card-option">
-    <img src="kitten3.jpg" alt="Kitten Style 3" onclick="window.open(this.src)">
+    <img src="kitten3.jpg" alt="Kitten Style 3">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
       <input type="hidden" name="item_name" value="Kitten Style 3">
       <input type="hidden" name="amount" value="5.00">
       <input type="hidden" name="currency_code" value="USD">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" value="Style 3">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     </form>
   </div>
 
   <!-- E-Card Option 4 -->
   <div class="card-option">
-    <img src="kitten4.jpg" alt="Kitten Style 4" onclick="window.open(this.src)">
+    <img src="kitten4.jpg" alt="Kitten Style 4">
     <form class="paypal-button" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="your-paypal-email@example.com">
       <input type="hidden" name="item_name" value="Kitten Style 4">
       <input type="hidden" name="amount" value="5.00">
       <input type="hidden" name="currency_code" value="USD">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" value="Style 4">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     </form>
   </div>
 
